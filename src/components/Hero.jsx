@@ -251,7 +251,7 @@ export default function Hero() {
 
               {/* Main Heading */}
               <h1 className="text-4xl md:text-6xl font-black text-white leading-tight font-mono">
-                {'>'} HEY, I'M SAMUEL KWIBE{' '}
+                {'>'} HEY, I'M {' '}
                 <motion.span
                   className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
                   initial={{ opacity: 0, scale: 0.9 }}
