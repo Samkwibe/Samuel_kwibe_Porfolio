@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+
+body { @apply bg-[#0b1020] text-neutral-100; }
+
+.container { @apply max-w-6xl mx-auto px-4; }
+.card { @apply rounded-2xl bg-white/5 border border-white/10 shadow-lg; }
