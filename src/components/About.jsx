@@ -84,8 +84,8 @@ export default function About() {
   }, [])
 
   const stats = [
-    { label: 'Projects', value: '20+', icon: '🚀' },
-    { label: 'Technologies', value: '15+', icon: '💻' },
+    { label: 'Projects', value: '29+', icon: '🚀' },
+    { label: 'GPA', value: '3.17', icon: '🎓' },
     { label: 'Experience', value: '2+ Years', icon: '📈' },
     { label: 'Status', value: 'Available', icon: '✅' },
   ]
