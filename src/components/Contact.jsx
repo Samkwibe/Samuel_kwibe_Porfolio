@@ -16,7 +16,7 @@ export default function Contact() {
     github: "https://github.com/Samkwibe",
     linkedin: "https://www.linkedin.com/in/samuel-kwibe-371633249/", 
     portfolio: "https://yourportfolio.com", 
-    resume: "/samuel-kwibe-resume.pdf",
+    resume: "/Samuel_Kwibe_Resume_Final.docx",
     expertise: [
       "React & Next.js Development",
       "Cloud Architecture (AWS/GCP)",
@@ -1024,7 +1024,7 @@ Submitted: ${new Date().toLocaleDateString()}`
                   <span>🗓️</span>
                   Schedule Meeting
                 </a>
-                <a href={professionalInfo.resume} className="btn-outline w-full text-center py-3 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] border-2">
+                <a href={professionalInfo.resume} download="Samuel_Kwibe_Resume_Final.docx" className="btn-outline w-full text-center py-3 hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] border-2">
                   <span>📄</span>
                   Download Resume
                 </a>

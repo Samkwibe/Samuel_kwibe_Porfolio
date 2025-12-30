@@ -28,7 +28,7 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <a className="ml-2 px-3 py-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 transition-colors text-sm" href="#">
+          <a className="ml-2 px-3 py-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 transition-colors text-sm" href="/Samuel_Kwibe_Resume_Final.docx" download="Samuel_Kwibe_Resume_Final.docx">
             Download CV
           </a>
         </nav>
