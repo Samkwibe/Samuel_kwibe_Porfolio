@@ -144,8 +144,8 @@ export default function Hero() {
   }, [])
 
   const stats = [
-    { number: '3.8', label: 'GPA SCORE', suffix: '/3.5', icon: '▧' },
-    { number: '25+', label: 'PROJECTS BUILT', icon: '◈' },
+    { number: '3.17', label: 'GPA SCORE', suffix: '/4.0', icon: '▧' },
+    { number: '29+', label: 'PROJECTS BUILT', icon: '◈' },
     { number: '15K+', label: 'LINES OF CODE', icon: '◷' },
     { number: '15+', label: 'TECH STACKS', icon: '◰' }
   ]
@@ -196,8 +196,8 @@ export default function Hero() {
       <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-cyan-400/50" />
 
       {/* Navigation */}
-      <nav className="relative z-50 py-6 px-4 sm:px-6 lg:px-8 border-b border-cyan-400/20 bg-black/20 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
+      <nav className="relative z-50 py-6 md:py-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-cyan-400/20 bg-black/20 backdrop-blur-lg">
+        <div className="w-full max-w-[1920px] mx-auto flex justify-between items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -208,8 +208,9 @@ export default function Hero() {
           
          
           <motion.a
-            href="/resume.pdf"
-            className="px-6 py-3 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-400/50 rounded-none font-mono text-sm tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25"
+            href="/Samuel_Kwibe_Resume_Final.docx"
+            download="Samuel_Kwibe_Resume_Final.docx"
+            className="px-6 md:px-8 py-3 md:py-4 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border-2 border-cyan-400/50 rounded-none font-mono text-sm md:text-base tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -219,9 +220,9 @@ export default function Hero() {
       </nav>
 
       {/* Main Hero Section */}
-      <section className="relative pt-12 pb-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <section className="relative pt-16 md:pt-24 pb-32 md:pb-40 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen flex items-center">
+        <div className="w-full max-w-[1920px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
             
             {/* Left Content */}
             <motion.div
@@ -250,8 +251,8 @@ export default function Hero() {
               </motion.div>
 
               {/* Main Heading */}
-              <h1 className="text-4xl md:text-6xl font-black text-white leading-tight font-mono">
-                {'>'} HEY, I'M {' '}
+              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-tight font-mono">
+{'>'} HEY, I'M {' '}
                 <motion.span
                   className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -263,16 +264,16 @@ export default function Hero() {
               </h1>
 
               {/* Typewriter */}
-              <div className="mt-6 h-16 flex items-center">
-                <div className="text-xl md:text-2xl font-mono text-cyan-400 bg-black/40 border border-cyan-400/30 px-6 py-3 relative overflow-hidden">
+              <div className="mt-8 md:mt-10 h-20 md:h-24 flex items-center">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-mono text-cyan-400 bg-black/40 border border-cyan-400/30 px-6 md:px-8 py-4 md:py-5 relative overflow-hidden">
                   <div className="absolute inset-0 bg-cyan-400/5 animate-pulse" />
                   {typedText}
-                  <span className={`ml-1 ${cursorBlink ? 'opacity-100' : 'opacity-0'}`}>▊</span>
+                  <span className={`ml-2 ${cursorBlink ? 'opacity-100' : 'opacity-0'}`}>▊</span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="mt-8 text-lg text-cyan-200/80 leading-relaxed max-w-2xl font-mono border-l-4 border-cyan-400/50 pl-4 bg-black/20 py-4">
+              <p className="mt-10 md:mt-12 text-xl md:text-2xl lg:text-3xl text-cyan-200/80 leading-relaxed max-w-4xl font-mono border-l-4 border-cyan-400/50 pl-6 md:pl-8 bg-black/20 py-6 md:py-8">
               {'>'} PASSIONATE COMPUTER SCIENCE STUDENT SPECIALIZING IN{' '}
                 <span className="text-cyan-400 font-bold">CLOUD COMPUTING</span>,{' '}
                 <span className="text-green-400 font-bold">AI/ML</span>, AND{' '}
@@ -285,7 +286,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="grid grid-cols-2 gap-4 mt-8"
+                className="grid grid-cols-2 gap-4 md:gap-6 mt-10 md:mt-12"
               >
                 {systemMetrics.map((metric, index) => (
                   <motion.div
@@ -293,11 +294,11 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.8 + index * 0.1 }}
-                    className="p-4 bg-black/40 border border-cyan-400/20 relative overflow-hidden"
+                    className="p-5 md:p-6 bg-black/40 border border-cyan-400/20 relative overflow-hidden"
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-cyan-300 text-sm font-mono">{metric.label}</span>
-                      <span className="text-cyan-400 font-mono text-lg" style={{ color: metric.color }}>
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-cyan-300 text-sm md:text-base font-mono">{metric.label}</span>
+                      <span className="text-cyan-400 font-mono text-lg md:text-xl" style={{ color: metric.color }}>
                         {metric.value}
                       </span>
                     </div>
@@ -315,66 +316,67 @@ export default function Hero() {
               </motion.div>
 
               {/* Quick Facts */}
-              <div className="grid grid-cols-1 gap-3 mt-8">
+              <div className="grid grid-cols-1 gap-4 md:gap-5 mt-10 md:mt-12">
                 {quickFacts.map((fact, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1 + index * 0.1 }}
-                    className="flex items-center gap-4 p-4 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group"
+                    className="flex items-center gap-4 md:gap-6 p-5 md:p-6 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group"
                   >
-                    <div className="text-cyan-400 text-xl font-mono">{fact.icon}</div>
+                    <div className="text-cyan-400 text-2xl md:text-3xl font-mono">{fact.icon}</div>
                     <div>
-                      <div className="font-mono text-cyan-300 text-sm tracking-widest">{fact.text}</div>
-                      <div className="text-cyan-300/60 text-xs font-mono">{fact.subtext}</div>
+                      <div className="font-mono text-cyan-300 text-base md:text-lg tracking-widest">{fact.text}</div>
+                      <div className="text-cyan-300/60 text-sm md:text-base font-mono">{fact.subtext}</div>
                     </div>
                   </motion.div>
                 ))}
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 md:mt-12">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.4 + index * 0.1 }}
-                    className="text-center p-4 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group relative overflow-hidden"
+                    className="text-center p-5 md:p-6 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group relative overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-cyan-400/5 group-hover:bg-cyan-400/10 transition-colors duration-300" />
-                    <div className="text-2xl mb-2 text-cyan-400 font-mono">{stat.icon}</div>
-                    <div className="text-2xl md:text-3xl font-black text-cyan-400 font-mono">
+                    <div className="text-3xl md:text-4xl mb-3 text-cyan-400 font-mono">{stat.icon}</div>
+                    <div className="text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 font-mono">
                       {stat.number}
-                      {stat.suffix && <span className="text-sm">{stat.suffix}</span>}
+                      {stat.suffix && <span className="text-base md:text-lg">{stat.suffix}</span>}
                     </div>
-                    <div className="text-xs text-cyan-300/60 mt-1 font-mono tracking-widest">{stat.label}</div>
+                    <div className="text-xs md:text-sm text-cyan-300/60 mt-2 font-mono tracking-widest">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mt-12">
+              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mt-12 md:mt-16">
                 <motion.a
-                  href="/resume.pdf"
-                  className="px-8 py-4 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border border-cyan-400 font-mono tracking-widest transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
+                  href="/Samuel_Kwibe_Resume_Final.docx"
+                  download="Samuel_Kwibe_Resume_Final.docx"
+                  className="px-10 md:px-12 py-5 md:py-6 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border-2 border-cyan-400 font-mono tracking-widest text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="absolute inset-0 bg-cyan-400/10 group-hover:bg-cyan-400/20 transition-colors duration-300" />
-                  <span className="text-lg">◊</span>
+                  <span className="text-xl md:text-2xl">◊</span>
                   {'>'} DOWNLOAD_RESUME
                 </motion.a>
                 
                 <MotionLink
                   to="/projects"
-                  className="px-8 py-4 border border-cyan-400/50 hover:border-cyan-400 hover:bg-cyan-400/10 text-cyan-400 font-mono tracking-widest transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
+                  className="px-10 md:px-12 py-5 md:py-6 border-2 border-cyan-400/50 hover:border-cyan-400 hover:bg-cyan-400/10 text-cyan-400 font-mono tracking-widest text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <div className="absolute inset-0 bg-cyan-400/5 group-hover:bg-cyan-400/10 transition-colors duration-300" />
-                  <span className="text-lg">◈</span>
+                  <span className="text-xl md:text-2xl">◈</span>
                   {'>'} VIEW_PROJECTS
                 </MotionLink>
               </div>
@@ -407,7 +409,7 @@ export default function Hero() {
                   </div>
 
                   {/* Terminal Content */}
-                  <div className="p-6 min-h-[500px] relative overflow-hidden">
+                  <div className="p-6 md:p-8 min-h-[500px] md:min-h-[600px] relative overflow-hidden">
                     {/* Matrix Background */}
                     <canvas
                       ref={canvasRef}
@@ -479,9 +481,9 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="p-6 bg-black/40 border border-cyan-400/20 backdrop-blur-sm"
+                className="p-6 md:p-8 bg-black/40 border border-cyan-400/20 backdrop-blur-sm"
               >
-                <h3 className="text-lg font-semibold text-cyan-400 mb-4 font-mono tracking-widest">
+                <h3 className="text-lg md:text-xl font-semibold text-cyan-400 mb-5 md:mb-6 font-mono tracking-widest">
                   {'>'} TECH_STACK
                 </h3>
                 <div className="space-y-4">
