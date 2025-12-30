@@ -16,7 +16,7 @@ function RecruiterImpactSection() {
     },
     {
       icon: TrendingUp,
-      title: "3.17 GPA | Dean's List",
+      title: "3.22 GPA | Dean's List",
       description: "Consistent academic excellence while building real-world applications",
       color: "from-purple-400 to-pink-500"
     },
@@ -28,8 +28,8 @@ function RecruiterImpactSection() {
     },
     {
       icon: Zap,
-      title: "Cloud & AI Ready",
-      description: "AWS certified, ML enthusiast ready to contribute from day one",
+      title: "Cloud & AI Enthusiast",
+      description: "Currently learning AWS Cloud (40% proficiency), ML enthusiast actively expanding skills",
       color: "from-orange-400 to-yellow-500"
     }
   ]

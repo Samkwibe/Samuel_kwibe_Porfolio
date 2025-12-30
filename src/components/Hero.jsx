@@ -144,7 +144,7 @@ export default function Hero() {
   }, [])
 
   const stats = [
-    { number: '3.17', label: 'GPA SCORE', suffix: '/4.0', icon: '▧' },
+    { number: '3.22', label: 'GPA SCORE', suffix: '/4.0', icon: '▧' },
     { number: '29+', label: 'PROJECTS BUILT', icon: '◈' },
     { number: '15K+', label: 'LINES OF CODE', icon: '◷' },
     { number: '15+', label: 'TECH STACKS', icon: '◰' }
@@ -160,14 +160,14 @@ export default function Hero() {
   const techStack = [
     { name: 'REACT/NEXT.JS', level: 90, color: '#00f5ff' },
     { name: 'PYTHON/AI', level: 85, color: '#00ff88' },
-    { name: 'AWS CLOUD', level: 80, color: '#ff0088' },
+    { name: 'AWS CLOUD', level: 40, color: '#ff0088' },
     { name: 'NODE.JS', level: 75, color: '#ffaa00' },
   ]
 
   const systemMetrics = [
     { label: 'SYSTEM LOAD', value: '87%', color: '#00f5ff' },
     { label: 'CODE EFFICIENCY', value: '92%', color: '#00ff88' },
-    { label: 'CLOUD READY', value: '95%', color: '#ff0088' },
+    { label: 'CLOUD READY', value: '40%', color: '#ff0088' },
     { label: 'AI INTEGRATION', value: '78%', color: '#ffaa00' }
   ]
 

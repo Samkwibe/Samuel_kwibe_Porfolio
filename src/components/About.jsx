@@ -46,7 +46,7 @@ export default function About() {
 
   const stats = [
     { label: 'Projects', value: '29+', icon: Rocket, color: 'from-cyan-400 to-blue-500' },
-    { label: 'GPA', value: '3.17', icon: Award, color: 'from-purple-400 to-pink-500' },
+    { label: 'GPA', value: '3.22', icon: Award, color: 'from-purple-400 to-pink-500' },
     { label: 'Experience', value: '2+ Years', icon: TrendingUp, color: 'from-green-400 to-emerald-500' },
     { label: 'Status', value: 'Available', icon: CheckCircle2, color: 'from-yellow-400 to-orange-500' },
   ]
@@ -62,7 +62,7 @@ export default function About() {
   const skillProgress = [
     { name: 'React & Next.js', level: 85, status: 'Advanced', projects: 8, icon: '⚛️' },
     { name: 'Python & Data Science', level: 80, status: 'Advanced', projects: 6, icon: '🐍' },
-    { name: 'AWS Cloud Services', level: 65, status: 'Intermediate', projects: 4, icon: '☁️' },
+    { name: 'AWS Cloud Services', level: 40, status: 'Learning', projects: 4, icon: '☁️' },
     { name: 'Docker & Containers', level: 75, status: 'Intermediate', projects: 5, icon: '🐳' },
     { name: 'Node.js & Express', level: 70, status: 'Intermediate', projects: 5, icon: '🟢' },
     { name: 'TypeScript', level: 60, status: 'Learning', projects: 3, icon: '📘' },
@@ -289,7 +289,7 @@ export default function About() {
       icon: '🎓',
       bullets: [
         'Expected Graduation: December 2026',
-        'GPA: 3.17/4.0',
+        'GPA: 3.22/4.0',
         'Focus: Full-Stack Development, Machine Learning, Cloud Computing, Cybersecurity',
         'Relevant Coursework: Full Stack Development I (A), Mobile Architecture & Programming (B+), Client/Server Development (A), Principles of Machine Learning (A-), Cybersecurity Foundations (A), Computer Security (B+), Operating Platforms (A)'
       ],
