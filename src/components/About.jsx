@@ -54,7 +54,7 @@ export default function About() {
   const highlights = [
     { icon: Code, text: 'Full-Stack Developer with expertise in React.js, Node.js, Firebase, and Android development', gradient: 'from-cyan-400 to-blue-500' },
     { icon: Brain, text: 'Machine Learning enthusiast with 85% accuracy models using scikit-learn, pandas, and NumPy', gradient: 'from-purple-400 to-pink-500' },
-    { icon: Cloud, text: 'Cloud Computing experience with AWS (EC2, S3, IAM, VPC, RDS, CloudWatch, CloudFormation)', gradient: 'from-blue-400 to-cyan-500' },
+    { icon: Cloud, text: 'Currently learning Cloud Computing with AWS (EC2, S3, IAM, VPC, RDS, CloudWatch, CloudFormation) - 40% proficiency', gradient: 'from-blue-400 to-cyan-500' },
     { icon: Rocket, text: 'Cybersecurity expertise with Wireshark, Snort, Kali Linux, and vulnerability assessment', gradient: 'from-green-400 to-emerald-500' },
   ]
 
