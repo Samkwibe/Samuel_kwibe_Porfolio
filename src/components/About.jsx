@@ -722,7 +722,7 @@ export default function About() {
                 </div>
               </div>
             </motion.div>
-          </section>
+          </motion.section>
 
           {/* Progress Tracking Section */}
           <motion.section 
@@ -883,7 +883,7 @@ export default function About() {
                 </div>
               )}
             </div>
-          </section>
+          </motion.section>
 
           {/* Experience Tabs */}
           <motion.section 
