@@ -410,8 +410,6 @@ export default function About() {
   ]
 
   // ── UI helpers ────────────────────────────────────────────────────────────────
-  const [tab, setTab] = useState('tech')
-
   const TabButton = ({ id, children, count }) => (
     <motion.button
       onClick={() => setTab(id)}
