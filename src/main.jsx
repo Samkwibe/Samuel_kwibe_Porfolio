@@ -11,15 +11,23 @@ import Contact from './components/Contact.jsx'
 import About from './components/About.jsx'
 import Testimonials from './components/Testimonials.jsx'
 
+import Layout from './components/Layout.jsx'
+
 const router = createBrowserRouter([
-  { path: '/', element: <App /> },
-  { path: '/about', element: <About /> },
-  { path: '/projects', element: <Projects /> },
-  { path: '/experience', element: <Experience /> },
-  { path: '/education', element: <Education /> },
-  { path: '/skills', element: <Skills /> },
-  { path: '/testimonials', element: <Testimonials /> },
-  { path: '/contact', element: <Contact /> },
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <App /> },
+      { path: 'about', element: <About /> },
+      { path: 'projects', element: <Projects /> },
+      { path: 'experience', element: <Experience /> },
+      { path: 'education', element: <Education /> },
+      { path: 'skills', element: <Skills /> },
+      { path: 'testimonials', element: <Testimonials /> },
+      { path: 'contact', element: <Contact /> },
+    ]
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

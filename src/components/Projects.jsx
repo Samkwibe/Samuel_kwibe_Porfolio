@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Award } from 'lucide-react'
 import { projects } from '../data/projects'
-import Navbar from './Navbar'
-import Footer from './Footer'
 
 function ProjectCard({ p, index }) {
   const [imageError, setImageError] = useState(false)
@@ -13,8 +11,8 @@ function ProjectCard({ p, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900/80 to-blue-900/20 border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
-      whileHover={{ y: -5, scale: 1.02 }}
+      className="group relative overflow-hidden rounded-2xl glass-panel hover:border-indigo-500/50 transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(99,102,241,0.3)]"
+      whileHover={{ y: -5 }}
     >
       {/* Featured Badge */}
       {p.featured && (
@@ -57,7 +55,7 @@ function ProjectCard({ p, index }) {
         <div className="mb-2">
           <span className="text-xs text-cyan-400/70 font-medium">{p.category}</span>
         </div>
-        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">
+        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-indigo-400 transition-colors">
           {p.name}
         </h3>
         <p className="text-sm text-gray-300/80 mb-4 line-clamp-2">{p.summary}</p>
@@ -139,7 +137,7 @@ export default function Projects({ featuredOnly = false }) {
   }
 
   const content = (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/10">
+    <div className="w-full">
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16">
         {/* Header */}
         <motion.header
@@ -273,11 +271,5 @@ export default function Projects({ featuredOnly = false }) {
     return content
   }
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1">{content}</main>
-      <Footer />
-    </div>
-  )
+  return content
 }

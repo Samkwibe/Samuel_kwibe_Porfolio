@@ -1,11 +1,4 @@
-# Dependencies
 node_modules
-
-# Build folder
 dist
-
-# Environment variables
 .env
-
-# Mac system files
 .DS_Store

@@ -1,7 +1,5 @@
 // Contact.jsx - Ultimate Professional Contact System with AI Assistant
 import { useMemo, useState, useRef, useEffect } from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
 
 export default function Contact() {
   // Your complete professional information
@@ -580,10 +578,8 @@ Submitted: ${new Date().toLocaleDateString()}`
   const msgCount = `${form.message.length}/${msgMax}`
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/10">
-      <Navbar />
-
-      <main className="section flex-1">
+    <div className="flex flex-col relative w-full">
+      <main className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-16 md:py-20 lg:py-24 relative z-10 flex-1">
         {/* Enhanced Header */}
         <header className="mb-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 mb-6">
@@ -719,7 +715,7 @@ Submitted: ${new Date().toLocaleDateString()}`
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Enhanced Form Section */}
           <section className="lg:col-span-2">
-            <div className="card p-8 bg-gradient-to-br from-gray-900/80 to-blue-900/20 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+            <div className="glass-panel p-8 rounded-3xl relative overflow-hidden">
               {/* Animated background elements */}
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"></div>
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-xl"></div>
@@ -887,7 +883,7 @@ Submitted: ${new Date().toLocaleDateString()}`
                 </h3>
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div className="card p-5 bg-gray-900/60 rounded-xl border border-white/10 shadow-lg hover:shadow-cyan-400/10 transition-all duration-300">
+                  <div className="glass-panel p-5 bg-white/5 rounded-xl transition-all duration-300">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-semibold text-cyan-400">API Payload (JSON)</h4>
                       <button 
@@ -915,7 +911,7 @@ Submitted: ${new Date().toLocaleDateString()}`
                     </pre>
                   </div>
 
-                  <div className="card p-5 bg-gray-900/60 rounded-xl border border-white/10 shadow-lg hover:shadow-cyan-400/10 transition-all duration-300">
+                  <div className="glass-panel p-5 bg-white/5 rounded-xl transition-all duration-300">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-semibold text-cyan-400">Email Template</h4>
                       <button 
@@ -932,7 +928,7 @@ Submitted: ${new Date().toLocaleDateString()}`
                 </div>
 
                 {/* AI Analysis Dashboard */}
-                <div className="card p-5 bg-gray-900/60 rounded-xl border border-white/10 shadow-lg">
+                <div className="glass-panel p-5 bg-white/5 rounded-xl">
                   <h4 className="text-sm font-semibold text-cyan-400 mb-4 flex items-center gap-2">
                     <span>🤖</span>
                     AI Analysis Dashboard
@@ -963,7 +959,7 @@ Submitted: ${new Date().toLocaleDateString()}`
           </section>
 
           {/* Enhanced Professional Sidebar */}
-          <aside className="card p-8 space-y-8 bg-gradient-to-b from-gray-900/80 to-blue-900/20 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm relative overflow-hidden">
+          <aside className="glass-panel p-8 space-y-8 rounded-3xl relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-cyan-500/10 rounded-full blur-xl"></div>
             <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"></div>
@@ -1090,7 +1086,7 @@ Submitted: ${new Date().toLocaleDateString()}`
 
         {/* Enhanced FAQ Section */}
         <section className="mt-20">
-          <div className="card p-8 bg-gradient-to-br from-gray-900/80 to-purple-900/20 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+          <div className="glass-panel p-8 rounded-3xl relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-xl"></div>
             <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-cyan-500/10 rounded-full blur-xl"></div>
@@ -1149,8 +1145,6 @@ Submitted: ${new Date().toLocaleDateString()}`
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   )
 }

@@ -1,520 +1,118 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useEffect, useState, useRef } from 'react'
-
-const MotionLink = motion(Link)
+import { ArrowRight, Download, Code, Sparkles, MonitorSmartphone, ShieldCheck } from 'lucide-react'
 
 export default function Hero() {
-  const [currentText, setCurrentText] = useState(0)
-  const [typedText, setTypedText] = useState('')
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [cursorBlink, setCursorBlink] = useState(true)
-  const canvasRef = useRef(null)
-  const gridRef = useRef(null)
-
-  const rotatingTexts = [
-    "FULL-STACK DEVELOPER",
-    "CLOUD & AI SPECIALIST", 
-    "TECH INNOVATOR",
-    "PROBLEM SOLVER",
-    "CODE ARCHITECT"
-  ]
-
-  // Typewriter effect
-  useEffect(() => {
-    const current = rotatingTexts[currentText]
-    const timeout = setTimeout(() => {
-      if (!isDeleting && typedText.length === current.length) {
-        setTimeout(() => setIsDeleting(true), 1000)
-      } else if (isDeleting && typedText.length === 0) {
-        setIsDeleting(false)
-        setCurrentText((prev) => (prev + 1) % rotatingTexts.length)
-      } else {
-        setTypedText(isDeleting ? current.substring(0, typedText.length - 1) : current.substring(0, typedText.length + 1))
-      }
-    }, isDeleting ? 30 : 60)
-
-    return () => clearTimeout(timeout)
-  }, [typedText, isDeleting, currentText, rotatingTexts])
-
-  // Cursor blink effect
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setCursorBlink(prev => !prev)
-    }, 400)
-    return () => clearInterval(cursorInterval)
-  }, [])
-
-  // Cyber Grid Effect
-  useEffect(() => {
-    const canvas = gridRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
-
-    const gridSize = 40
-    const cols = Math.floor(canvas.width / gridSize)
-    const rows = Math.floor(canvas.height / gridSize)
-    const nodes = []
-
-    // Create grid nodes
-    for (let x = 0; x < cols; x++) {
-      for (let y = 0; y < rows; y++) {
-        nodes.push({
-          x: x * gridSize,
-          y: y * gridSize,
-          connections: []
-        })
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       }
     }
+  }
 
-    function draw() {
-      ctx.fillStyle = 'rgba(6, 6, 16, 0.1)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+  }
 
-      // Draw connections
-      ctx.strokeStyle = 'rgba(0, 245, 255, 0.1)'
-      ctx.lineWidth = 0.5
-
-      nodes.forEach(node => {
-        nodes.forEach(otherNode => {
-          const distance = Math.sqrt(
-            Math.pow(node.x - otherNode.x, 2) + Math.pow(node.y - otherNode.y, 2)
-          )
-          if (distance < 100 && Math.random() > 0.7) {
-            ctx.beginPath()
-            ctx.moveTo(node.x, node.y)
-            ctx.lineTo(otherNode.x, otherNode.y)
-            ctx.stroke()
-          }
-        })
-      })
-
-      // Draw nodes
-      ctx.fillStyle = 'rgba(0, 245, 255, 0.3)'
-      nodes.forEach(node => {
-        if (Math.random() > 0.9) {
-          ctx.beginPath()
-          ctx.arc(node.x, node.y, 1, 0, Math.PI * 2)
-          ctx.fill()
-        }
-      })
-    }
-
-    const interval = setInterval(draw, 100)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Matrix Code Effect
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
-
-    const binary = "0101010101101110Samuel Raymond 11010010111010001111001"
-    const fontSize = 12
-    const columns = Math.floor(canvas.width / fontSize)
-    const drops = Array(columns).fill(-fontSize)
-
-    function draw() {
-      ctx.fillStyle = 'rgba(6, 6, 16, 0.05)'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
-      
-      ctx.fillStyle = '#00f5ff'
-      ctx.font = `bold ${fontSize}px 'Courier New', monospace`
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = binary[Math.floor(Math.random() * binary.length)]
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize)
-        
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0
-        }
-        drops[i]++
-      }
-    }
-
-    const interval = setInterval(draw, 50)
-    return () => clearInterval(interval)
-  }, [])
-
-  const stats = [
-    { number: '3.22', label: 'GPA SCORE', suffix: '/4.0', icon: '▧' },
-    { number: '29+', label: 'PROJECTS BUILT', icon: '◈' },
-    { number: '15K+', label: 'LINES OF CODE', icon: '◷' },
-    { number: '15+', label: 'TECH STACKS', icon: '◰' }
-  ]
-
-  const quickFacts = [
-    { icon: '◉', text: 'B.S. COMPUTER SCIENCE', subtext: 'SOUTHERN NEW HAMPSHIRE UNIVERSITY' },
-    { icon: '◉', text: 'BASED IN', subtext: 'MANCHESTER, NH' },
-    { icon: '◉', text: 'SPECIALIZING IN', subtext: 'CLOUD & AI TECHNOLOGIES' },
-    { icon: '◉', text: 'CURRENTLY', subtext: 'SEEKING INTERNSHIP 2024' }
-  ]
-
-  const techStack = [
-    { name: 'REACT/NEXT.JS', level: 90, color: '#00f5ff' },
-    { name: 'PYTHON/AI', level: 85, color: '#00ff88' },
-    { name: 'AWS CLOUD', level: 40, color: '#ff0088' },
-    { name: 'NODE.JS', level: 75, color: '#ffaa00' },
-  ]
-
-  const systemMetrics = [
-    { label: 'SYSTEM LOAD', value: '87%', color: '#00f5ff' },
-    { label: 'CODE EFFICIENCY', value: '92%', color: '#00ff88' },
-    { label: 'CLOUD READY', value: '40%', color: '#ff0088' },
-    { label: 'AI INTEGRATION', value: '78%', color: '#ffaa00' }
-  ]
-
-  const commandLines = [
-    { command: '> INITIATE_PORTFOLIO_SYSTEM', status: 'COMPLETE' },
-    { command: '> LOAD_TECH_STACK_DATA', status: 'COMPLETE' },
-    { command: '> CONNECT_CLOUD_SERVICES', status: 'RUNNING' },
-    { command: '> DEPLOY_AI_MODULES', status: 'PENDING' }
+  const techPills = [
+    { name: "React", icon: Code, color: "text-blue-400", bg: "bg-blue-400/10" },
+    { name: "Node.js", icon: MonitorSmartphone, color: "text-green-400", bg: "bg-green-400/10" },
+    { name: "AWS", icon: Sparkles, color: "text-orange-400", bg: "bg-orange-400/10" },
+    { name: "Cybersecurity", icon: ShieldCheck, color: "text-purple-400", bg: "bg-purple-400/10" }
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 overflow-hidden relative">
-      {/* Cyber Grid Background */}
-      <canvas
-        ref={gridRef}
-        className="absolute inset-0 w-full h-full opacity-40"
-      />
-      
-      {/* Animated Scan Lines */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent animate-pulse pointer-events-none" />
-      
-      {/* Corner Accents */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-cyan-400/50" />
-      <div className="absolute top-0 right-0 w-32 h-32 border-t-2 border-r-2 border-cyan-400/50" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 border-b-2 border-l-2 border-cyan-400/50" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-cyan-400/50" />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+      {/* Background Animated Orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/20 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+            scale: [1, 1.5, 1],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]"
+        />
+      </div>
 
-      {/* Navigation */}
-      <nav className="relative z-50 py-6 md:py-8 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-cyan-400/20 bg-black/20 backdrop-blur-lg">
-        <div className="w-full max-w-[1920px] mx-auto flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-cyan-400 font-mono tracking-widest"
-          >
-            SAMUEL.PRO
+      <div className="relative z-10 max-w-5xl mx-auto w-full pt-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center"
+        >
+          {/* Status Badge */}
+          <motion.div variants={itemVariants} className="flex justify-center mb-8">
+            <div className="glass-panel px-4 py-2 rounded-full flex items-center gap-2 border-white/10 shadow-lg shadow-black/20">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </span>
+              <span className="text-sm font-medium text-emerald-400 tracking-wide">
+                Available for Summer 2024 Internships
+              </span>
+            </div>
           </motion.div>
-          
-         
-          <motion.a
-            href="/Samuel_Kwibe_Resume_Final.docx"
-            download="Samuel_Kwibe_Resume_Final.docx"
-            className="px-6 md:px-8 py-3 md:py-4 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border-2 border-cyan-400/50 rounded-none font-mono text-sm md:text-base tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/25"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-             {'>'} DOWNLOAD_CV
-          </motion.a>
-        </div>
-      </nav>
 
-      {/* Main Hero Section */}
-      <section className="relative pt-16 md:pt-24 pb-32 md:pb-40 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 min-h-screen flex items-center">
-        <div className="w-full max-w-[1920px] mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* Main Heading */}
+          <motion.h1 variants={itemVariants} className="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6">
+            <span className="block text-white">Hi, I'm Samuel</span>
+            <span className="block mt-2 text-gradient pb-2">
+              Building Digital Experiences
+            </span>
+          </motion.h1>
+
+          {/* Subheading */}
+          <motion.p variants={itemVariants} className="mt-6 text-xl sm:text-2xl text-neutral-400 max-w-3xl mx-auto font-light leading-relaxed">
+            I'm a Computer Science student at SNHU specializing in Full-Stack Development, Cloud Computing, and AI solutions.
+          </motion.p>
+
+          {/* Tech Stack Pills */}
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 mt-10">
+            {techPills.map((tech, idx) => {
+              const Icon = tech.icon;
+              return (
+                <div key={idx} className={`flex items-center gap-2 px-4 py-2 rounded-xl ${tech.bg} border border-white/5 backdrop-blur-md transition-all hover:scale-105`}>
+                  <Icon size={16} className={tech.color} />
+                  <span className={`text-sm font-medium ${tech.color}`}>{tech.name}</span>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/projects" className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-indigo-600 rounded-2xl hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 shadow-[0_0_40px_-10px_rgba(79,70,229,0.5)]">
+              View My Work
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
             
-            {/* Left Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative z-10"
-            >
-              {/* System Status Badge */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="inline-flex items-center gap-3 px-6 py-3 bg-black/40 border border-cyan-400/30 mb-8 relative overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-cyan-400/10 animate-pulse" />
-                <div className="text-cyan-400 text-lg font-mono">◊</div>
-                <div>
-                  <div className="text-cyan-400 text-sm font-mono tracking-widest">
-                    SYSTEM_STATUS: ON CAMPUS
-                  </div>
-                  <div className="text-cyan-300/70 text-xs font-mono">
-                    COMPUTER_SCIENCE_STUDENT AT SNHU
-                  </div>
-                </div>
-              </motion.div>
+            <a href="/Samuel_Kwibe_Resume_Final.docx" download className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-neutral-300 transition-all duration-200 glass-panel rounded-2xl hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/20">
+              <Download className="mr-2 w-5 h-5 group-hover:-translate-y-1 transition-transform" />
+              Download Resume
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
 
-              {/* Main Heading */}
-              <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white leading-tight font-mono">
-{'>'} HEY, I'M {' '}
-                <motion.span
-                  className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                >
-                  SAMUEL
-                </motion.span>
-              </h1>
-
-              {/* Typewriter */}
-              <div className="mt-8 md:mt-10 h-20 md:h-24 flex items-center">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-mono text-cyan-400 bg-black/40 border border-cyan-400/30 px-6 md:px-8 py-4 md:py-5 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-cyan-400/5 animate-pulse" />
-                  {typedText}
-                  <span className={`ml-2 ${cursorBlink ? 'opacity-100' : 'opacity-0'}`}>▊</span>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="mt-10 md:mt-12 text-xl md:text-2xl lg:text-3xl text-cyan-200/80 leading-relaxed max-w-4xl font-mono border-l-4 border-cyan-400/50 pl-6 md:pl-8 bg-black/20 py-6 md:py-8">
-              {'>'} PASSIONATE COMPUTER SCIENCE STUDENT SPECIALIZING IN{' '}
-                <span className="text-cyan-400 font-bold">CLOUD COMPUTING</span>,{' '}
-                <span className="text-green-400 font-bold">AI/ML</span>, AND{' '}
-                <span className="text-purple-400 font-bold">FULL-STACK DEVELOPMENT</span>. 
-                BUILDING INNOVATIVE SOLUTIONS AND EXPLORING CUTTING-EDGE TECHNOLOGIES.
-              </p>
-
-              {/* System Metrics */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="grid grid-cols-2 gap-4 md:gap-6 mt-10 md:mt-12"
-              >
-                {systemMetrics.map((metric, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    className="p-5 md:p-6 bg-black/40 border border-cyan-400/20 relative overflow-hidden"
-                  >
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-cyan-300 text-sm md:text-base font-mono">{metric.label}</span>
-                      <span className="text-cyan-400 font-mono text-lg md:text-xl" style={{ color: metric.color }}>
-                        {metric.value}
-                      </span>
-                    </div>
-                    <div className="h-1 bg-cyan-400/10 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: metric.color }}
-                        initial={{ width: 0 }}
-                        animate={{ width: metric.value }}
-                        transition={{ delay: 1 + index * 0.2, duration: 1.5 }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Quick Facts */}
-              <div className="grid grid-cols-1 gap-4 md:gap-5 mt-10 md:mt-12">
-                {quickFacts.map((fact, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1 + index * 0.1 }}
-                    className="flex items-center gap-4 md:gap-6 p-5 md:p-6 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group"
-                  >
-                    <div className="text-cyan-400 text-2xl md:text-3xl font-mono">{fact.icon}</div>
-                    <div>
-                      <div className="font-mono text-cyan-300 text-base md:text-lg tracking-widest">{fact.text}</div>
-                      <div className="text-cyan-300/60 text-sm md:text-base font-mono">{fact.subtext}</div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10 md:mt-12">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.4 + index * 0.1 }}
-                    className="text-center p-5 md:p-6 bg-black/40 border border-cyan-400/20 hover:border-cyan-400/50 transition-all duration-300 group relative overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-cyan-400/5 group-hover:bg-cyan-400/10 transition-colors duration-300" />
-                    <div className="text-3xl md:text-4xl mb-3 text-cyan-400 font-mono">{stat.icon}</div>
-                    <div className="text-3xl md:text-4xl lg:text-5xl font-black text-cyan-400 font-mono">
-                      {stat.number}
-                      {stat.suffix && <span className="text-base md:text-lg">{stat.suffix}</span>}
-                    </div>
-                    <div className="text-xs md:text-sm text-cyan-300/60 mt-2 font-mono tracking-widest">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mt-12 md:mt-16">
-                <motion.a
-                  href="/Samuel_Kwibe_Resume_Final.docx"
-                  download="Samuel_Kwibe_Resume_Final.docx"
-                  className="px-10 md:px-12 py-5 md:py-6 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 border-2 border-cyan-400 font-mono tracking-widest text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="absolute inset-0 bg-cyan-400/10 group-hover:bg-cyan-400/20 transition-colors duration-300" />
-                  <span className="text-xl md:text-2xl">◊</span>
-                  {'>'} DOWNLOAD_RESUME
-                </motion.a>
-                
-                <MotionLink
-                  to="/projects"
-                  className="px-10 md:px-12 py-5 md:py-6 border-2 border-cyan-400/50 hover:border-cyan-400 hover:bg-cyan-400/10 text-cyan-400 font-mono tracking-widest text-base md:text-lg transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="absolute inset-0 bg-cyan-400/5 group-hover:bg-cyan-400/10 transition-colors duration-300" />
-                  <span className="text-xl md:text-2xl">◈</span>
-                  {'>'} VIEW_PROJECTS
-                </MotionLink>
-              </div>
-            </motion.div>
-
-            {/* Right Content - Cyber Terminal */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-6"
-            >
-              {/* Main Terminal Display */}
-              <motion.div
-                className="relative group"
-                whileHover={{ scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                {/* Terminal Window */}
-                <div className="relative bg-black/80 border border-cyan-400/30 shadow-2xl shadow-cyan-500/20">
-                  {/* Window Header */}
-                  <div className="flex items-center justify-between p-4 bg-cyan-400/10 border-b border-cyan-400/20">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <div className="text-cyan-400 text-sm font-mono tracking-widest">SYSTEM_TERMINAL</div>
-                    <div className="w-6"></div>
-                  </div>
-
-                  {/* Terminal Content */}
-                  <div className="p-6 md:p-8 min-h-[500px] md:min-h-[600px] relative overflow-hidden">
-                    {/* Matrix Background */}
-                    <canvas
-                      ref={canvasRef}
-                      className="absolute inset-0 w-full h-full opacity-30"
-                    />
-                    
-                    {/* Command Lines */}
-                    <div className="relative z-10 space-y-3">
-                      {commandLines.map((line, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 1 + index * 0.2 }}
-                          className="font-mono text-sm"
-                        >
-                          <span className="text-green-400">{line.command}</span>
-                          <span className="text-cyan-400 ml-2">[{line.status}]</span>
-                        </motion.div>
-                      ))}
-                      
-                      {/* Live Output */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 2 }}
-                        className="mt-6 p-4 bg-cyan-400/5 border border-cyan-400/20"
-                      >
-                        <div className="text-cyan-400 text-sm font-mono mb-2">{'>'} SYSTEM_OUTPUT</div>
-                        <div className="text-green-300 text-sm font-mono space-y-1">
-                          <div>{'>'} INITIALIZING_PORTFOLIO_SYSTEM...</div>
-                          <div>{'>'} LOADING_TECHNOLOGY_STACK...</div>
-                          <div>{'>'} CONNECTING_CLOUD_SERVICES...</div>
-                          <div className="text-cyan-400">{'>'} READY_FOR_INTERACTION</div>
-                        </div>
-                      </motion.div>
-                    </div>
-
-                    {/* Blinking Cursor */}
-                    <div className="absolute bottom-4 left-4">
-                      <div className="flex items-center gap-2 text-cyan-400 font-mono text-sm">
-                        <span>USER@SAMUEL.PRO</span>
-                        <span className={`${cursorBlink ? 'opacity-100' : 'opacity-0'}`}>▊</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Tech Indicators */}
-                <motion.div
-                  className="absolute -top-2 -left-2 px-3 py-1 bg-black/80 border border-cyan-400/50 font-mono text-xs text-cyan-400 tracking-widest"
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  LIVE_FEED
-                </motion.div>
-                
-                <motion.div
-                  className="absolute -bottom-2 -right-2 px-3 py-1 bg-black/80 border border-green-400/50 font-mono text-xs text-green-400 tracking-widest"
-                  animate={{ y: [0, 3, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                >
-                  SYSTEM_ACTIVE
-                </motion.div>
-              </motion.div>
-
-              {/* Tech Stack Visualization */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="p-6 md:p-8 bg-black/40 border border-cyan-400/20 backdrop-blur-sm"
-              >
-                <h3 className="text-lg md:text-xl font-semibold text-cyan-400 mb-5 md:mb-6 font-mono tracking-widest">
-                  {'>'} TECH_STACK
-                </h3>
-                <div className="space-y-4">
-                  {techStack.map((tech, index) => (
-                    <div key={tech.name} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm text-cyan-300 font-mono tracking-widest">{tech.name}</span>
-                        <span className="text-cyan-400 text-sm font-mono" style={{ color: tech.color }}>
-                          {tech.level}%
-                        </span>
-                      </div>
-                      <div className="h-2 bg-cyan-400/10 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full"
-                          style={{ backgroundColor: tech.color }}
-                          initial={{ width: 0 }}
-                          animate={{ width: `${tech.level}%` }}
-                          transition={{ delay: 1.2 + index * 0.2, duration: 1.5, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom Scan Bar */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse" />
-    </div>
+      {/* Decorative Bottom Gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    </section>
   )
 }

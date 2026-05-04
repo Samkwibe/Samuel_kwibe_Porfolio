@@ -13,27 +13,41 @@ export default function Navbar() {
   const { pathname } = useLocation()
 
   return (
-    <header className="border-b border-white/10 sticky top-0 z-50 bg-[#0b1020]/80 backdrop-blur">
-      <div className="container flex items-center justify-between py-3">
-        <Link to="/" className="font-semibold tracking-tight">
-          Samuel<span className="opacity-60">.pro</span>
+    <header className="fixed top-0 w-full z-50 px-4 py-4 md:py-6 transition-all duration-300">
+      <div className="max-w-6xl mx-auto glass-panel rounded-2xl px-6 py-4 flex items-center justify-between shadow-lg shadow-black/20">
+        <Link to="/" className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-inner">
+            S
+          </span>
+          Samuel<span className="text-indigo-400">.pro</span>
         </Link>
-        <nav className="hidden md:flex gap-6 text-sm items-center">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className={`hover:opacity-100 opacity-80 relative ${pathname === l.to ? 'after:content-[""] after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:bg-blue-500' : ''}`}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <a className="ml-2 px-3 py-2 rounded-xl bg-blue-600/90 hover:bg-blue-600 transition-colors text-sm" href="/Samuel_Kwibe_Resume_Final.docx" download="Samuel_Kwibe_Resume_Final.docx">
-            Download CV
+        
+        <nav className="hidden md:flex gap-8 text-sm font-medium items-center">
+          {links.map((l) => {
+            const isActive = pathname === l.to;
+            return (
+              <Link
+                key={l.to}
+                to={l.to}
+                className={`relative px-1 py-2 transition-colors ${isActive ? 'text-white' : 'text-neutral-400 hover:text-white'}`}
+              >
+                {l.label}
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-500 rounded-full shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
+                )}
+              </Link>
+            )
+          })}
+          <a 
+            className="ml-4 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 transition-all text-sm font-semibold flex items-center gap-2 text-white" 
+            href="/Samuel_Kwibe_Resume_Final.docx" 
+            download="Samuel_Kwibe_Resume_Final.docx"
+          >
+            Resume
           </a>
         </nav>
-        <button className="md:hidden p-2 border border-white/10 rounded-lg" aria-label="Menu">
-          <Menu size={18} />
+        <button className="md:hidden p-2 text-neutral-400 hover:text-white transition-colors" aria-label="Menu">
+          <Menu size={24} />
         </button>
       </div>
     </header>

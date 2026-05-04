@@ -1,5 +1,4 @@
-import Navbar from './Navbar'
-import Footer from './Footer'
+
 
 export default function Experience() {
   const items = [
@@ -10,28 +9,24 @@ export default function Experience() {
   ]
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="container my-10 flex-1">
-        <h1 className="text-2xl font-semibold mb-6">Experience</h1>
-        <div className="space-y-5">
-          {items.map((x, i) => (
-            <div key={i} className="card p-5">
-              <div className="flex justify-between items-start gap-4">
-                <div>
-                  <h3 className="text-lg font-semibold">{x.role}</h3>
-                  <p className="opacity-80">{x.org}</p>
-                </div>
-                <span className="text-sm opacity-70">{x.period}</span>
+    <main className="container my-10 flex-1">
+      <h1 className="text-2xl font-semibold mb-6">Experience</h1>
+      <div className="space-y-5">
+        {items.map((x, i) => (
+          <div key={i} className="glass-panel p-6 rounded-2xl">
+            <div className="flex justify-between items-start gap-4">
+              <div>
+                <h3 className="text-lg font-semibold">{x.role}</h3>
+                <p className="opacity-80">{x.org}</p>
               </div>
-              <ul className="mt-3 list-disc pl-5 opacity-90 text-sm">
-                {x.bullets.map((b, j) => <li key={j}>{b}</li>)}
-              </ul>
+              <span className="text-sm opacity-70">{x.period}</span>
             </div>
-          ))}
-        </div>
-      </main>
-      <Footer />
-    </div>
+            <ul className="mt-3 list-disc pl-5 opacity-90 text-sm">
+              {x.bullets.map((b, j) => <li key={j}>{b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </main>
   )
 }

@@ -2,8 +2,6 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Download, Mail, Github, Linkedin, ExternalLink, Award, Code, Cloud, Brain, Rocket, Sparkles, TrendingUp, Target, CheckCircle2 } from 'lucide-react'
-import Navbar from './Navbar'
-import Footer from './Footer'
 import { profile } from '../data/profile'
 
 export default function About() {
@@ -46,7 +44,7 @@ export default function About() {
 
   const stats = [
     { label: 'Projects', value: '29+', icon: Rocket, color: 'from-cyan-400 to-blue-500' },
-    { label: 'GPA', value: '3.22', icon: Award, color: 'from-purple-400 to-pink-500' },
+    { label: 'GPA', value: '3.226', icon: Award, color: 'from-purple-400 to-pink-500' },
     { label: 'Experience', value: '2+ Years', icon: TrendingUp, color: 'from-green-400 to-emerald-500' },
     { label: 'Status', value: 'Available', icon: CheckCircle2, color: 'from-yellow-400 to-orange-500' },
   ]
@@ -288,8 +286,8 @@ export default function About() {
       org: 'Southern New Hampshire University (SNHU)',
       icon: '🎓',
       bullets: [
-        'Expected Graduation: December 2026',
-        'GPA: 3.22/4.0',
+        'Expected Graduation: August 2026',
+        'GPA: 3.226/4.0',
         'Focus: Full-Stack Development, Machine Learning, Cloud Computing, Cybersecurity',
         'Relevant Coursework: Full Stack Development I (A), Mobile Architecture & Programming (B+), Client/Server Development (A), Principles of Machine Learning (A-), Cybersecurity Foundations (A), Computer Security (B+), Operating Platforms (A)'
       ],
@@ -513,14 +511,8 @@ export default function About() {
   )
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/10 overflow-hidden relative">
-      {/* Static Code Background - Removed distracting animations */}
-      <div className="fixed inset-0 pointer-events-none z-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-purple-500/5"></div>
-      </div>
+    <div className="flex flex-col relative w-full">
 
-      <Navbar />
-      
       <main className="flex-1 relative z-10">
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-16 md:py-20 lg:py-24">
           {/* Page Header */}
@@ -566,7 +558,7 @@ export default function About() {
               animate={profileInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="card p-8 md:p-10 lg:p-12 bg-gradient-to-br from-gray-900/80 to-blue-900/20 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm">
+              <div className="glass-panel p-8 md:p-10 lg:p-12 rounded-3xl">
                 <div className="text-center">
                   <motion.div 
                     className="relative mx-auto w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 rounded-full p-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600"
@@ -578,7 +570,7 @@ export default function About() {
                       </div>
                     ) : (
                       <img 
-                        src="/profile.jpg" 
+                        src="/Profile_grad.png" 
                         alt={profile.name}
                         className="w-full h-full rounded-full object-cover"
                         onError={() => setImageError(true)}
@@ -667,7 +659,7 @@ export default function About() {
               animate={profileInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="card p-8 md:p-10 lg:p-12 bg-gradient-to-br from-gray-900/80 to-purple-900/20 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm h-full">
+              <div className="glass-panel p-8 md:p-10 lg:p-12 rounded-3xl h-full">
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 md:mb-10 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   Current Focus & Expertise
                 </h3>
@@ -758,7 +750,7 @@ export default function About() {
             </div>
 
             {/* Progress Content */}
-            <div className="card p-8 bg-gradient-to-br from-gray-900/80 to-blue-900/20 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-sm">
+            <div className="glass-panel p-8 rounded-3xl">
               {/* Skills Progress */}
               {activeProgressTab === 'skills' && (
                 <div className="space-y-6">
@@ -1103,8 +1095,6 @@ export default function About() {
           </motion.section>
         </div>
       </main>
-
-      <Footer />
     </div>
   )
 }
