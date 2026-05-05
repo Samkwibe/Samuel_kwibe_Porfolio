@@ -35,7 +35,7 @@ function ProjectCard({ p }) {
           </div>
         ) : (
           <img
-            src={p.image}
+            src={`${import.meta.env.BASE_URL}${p.image.replace(/^\\//, '')}`}
             alt={p.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
             onError={() => setImageError(true)}

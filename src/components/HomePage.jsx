@@ -78,7 +78,7 @@ export default function HomePage() {
               <Link to="/projects" className="w-full sm:w-auto px-8 py-4 border border-green-400 bg-green-400/10 text-green-400 font-bold text-sm hover:bg-green-400 hover:text-black transition-all flex items-center justify-center gap-2 border-glow">
                 ./execute_projects.sh <ArrowRight size={16} />
               </Link>
-              <a href="/Samuel_Kwibe_Resume_Final.docx" download="Samuel_Kwibe_Resume_Final.docx" className="w-full sm:w-auto px-8 py-4 border border-slate-600 bg-black text-slate-300 font-bold text-sm hover:border-green-400 hover:text-green-400 transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(74,222,128,0.2)]">
+              <a href={`${import.meta.env.BASE_URL}Samuel_Kwibe_Resume_Final.docx`} download="Samuel_Kwibe_Resume_Final.docx" className="w-full sm:w-auto px-8 py-4 border border-slate-600 bg-black text-slate-300 font-bold text-sm hover:border-green-400 hover:text-green-400 transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(74,222,128,0.2)]">
                 <Download size={16} /> wget resume.docx
               </a>
             </div>
@@ -95,7 +95,7 @@ export default function HomePage() {
 
               <div className="w-full h-full relative overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700">
                 <img
-                  src={graduationImages[currentImageIndex]}
+                  src={`${import.meta.env.BASE_URL}${graduationImages[currentImageIndex].replace(/^\\//, '')}`}
                   alt="Samuel Graduation"
                   className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100"
                 />
