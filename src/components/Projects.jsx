@@ -1,113 +1,105 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { ExternalLink, Github, Award } from 'lucide-react'
 import { projects } from '../data/projects'
 
-function ProjectCard({ p, index }) {
+function ProjectCard({ p }) {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group relative overflow-hidden rounded-2xl glass-panel hover:border-indigo-500/50 transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(99,102,241,0.3)]"
-      whileHover={{ y: -5 }}
-    >
+    <div className="group relative overflow-hidden bg-[#050508] border border-green-500/20 hover:border-green-400 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(74,222,128,0.15)] flex flex-col h-full rounded-none">
+      
       {/* Featured Badge */}
       {p.featured && (
-        <div className="absolute top-4 right-4 z-10">
-          <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-semibold">
+        <div className="absolute top-4 right-4 z-10 font-mono">
+          <div className="flex items-center gap-1 px-2 py-1 bg-green-400/20 border border-green-400 text-green-400 text-[10px] uppercase tracking-widest font-bold">
             <Award size={12} />
-            Featured
+            [FEATURED]
           </div>
         </div>
       )}
 
       {/* Year Badge */}
       {p.year && (
-        <div className="absolute top-4 left-4 z-10">
-          <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-medium border border-white/20">
+        <div className="absolute top-4 left-4 z-10 font-mono">
+          <div className="px-2 py-1 bg-black/80 backdrop-blur-sm text-cyan-400 text-[10px] border border-cyan-500/30 tracking-widest">
             {p.year}
           </div>
         </div>
       )}
 
       {/* Project Image */}
-      <div className="relative h-48 md:h-56 overflow-hidden bg-gradient-to-br from-cyan-500/10 to-blue-500/10">
+      <div className="relative h-48 md:h-56 overflow-hidden bg-black border-b border-green-500/20 grayscale group-hover:grayscale-0 transition-all duration-500">
         {imageError ? (
-          <div className="w-full h-full flex items-center justify-center text-cyan-400/50 text-sm">
-            Image not available
+          <div className="w-full h-full flex items-center justify-center text-green-400/50 text-sm font-mono">
+            [ERR: IMG_NOT_FOUND]
           </div>
         ) : (
           <img
             src={p.image}
             alt={p.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
             onError={() => setImageError(true)}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] pointer-events-none opacity-40 group-hover:opacity-20 transition-opacity" />
       </div>
 
       {/* Project Content */}
-      <div className="p-6">
-        <div className="mb-2">
-          <span className="text-xs text-cyan-400/70 font-medium">{p.category}</span>
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="mb-3 font-mono">
+          <span className="text-xs text-cyan-400 tracking-widest uppercase">{'>'} {p.category}</span>
         </div>
-        <h3 className="text-xl font-bold mb-2 text-white group-hover:text-indigo-400 transition-colors">
+        <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-green-400 transition-colors">
           {p.name}
         </h3>
-        <p className="text-sm text-gray-300/80 mb-4 line-clamp-2">{p.summary}</p>
+        <p className="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">
+          {p.summary}
+        </p>
 
         {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6 font-mono">
           {p.tech.slice(0, 4).map((tech, i) => (
             <span
               key={i}
-              className="px-2 py-1 text-xs rounded-lg bg-white/5 border border-white/10 text-gray-300"
+              className="px-2 py-1 text-[10px] uppercase tracking-wider bg-black border border-green-500/30 text-green-400"
             >
               {tech}
             </span>
           ))}
           {p.tech.length > 4 && (
-            <span className="px-2 py-1 text-xs rounded-lg bg-white/5 border border-white/10 text-gray-300">
-              +{p.tech.length - 4}
+            <span className="px-2 py-1 text-[10px] uppercase tracking-wider bg-black border border-green-500/30 text-green-400">
+              +{p.tech.length - 4} MORE
             </span>
           )}
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 font-mono mt-auto">
           {p.live && p.live !== "#" && (
-            <motion.a
+            <a
               href={p.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-sm font-medium transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-cyan-500/50 bg-cyan-500/10 hover:bg-cyan-500 hover:text-black text-cyan-400 text-xs font-bold uppercase tracking-widest transition-all"
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={14} />
               Live
-            </motion.a>
+            </a>
           )}
           {p.code && p.code !== "#" && (
-            <motion.a
+            <a
               href={p.code}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 text-white text-sm font-medium transition-all"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-slate-600 hover:border-green-400 hover:text-green-400 text-slate-300 text-xs font-bold uppercase tracking-widest transition-all"
             >
-              <Github size={16} />
+              <Github size={14} />
               Code
-            </motion.a>
+            </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -137,74 +129,65 @@ export default function Projects({ featuredOnly = false }) {
   }
 
   const content = (
-    <div className="w-full">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16">
-        {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 mb-6">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-            <p className="text-sm font-semibold text-cyan-400/80 tracking-wider">PORTFOLIO</p>
-          </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Projects</span>
-          </h1>
-          <p className="text-xl md:text-2xl opacity-80 max-w-3xl mx-auto">
-            A collection of {stats.total} projects showcasing my journey in software development, from web applications to machine learning and cloud infrastructure.
-          </p>
-        </motion.header>
+    <div className="w-full bg-[#0a0a0e]">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 md:py-16 max-w-7xl mx-auto">
+        
+        {/* Header (Only show if NOT featuredOnly, since App.jsx handles featured headers) */}
+        {!featuredOnly && (
+          <header className="mb-16 border-b border-green-500/20 pb-12">
+            <div className="font-mono text-sm mb-6 flex items-center gap-2 text-slate-400">
+              <span className="text-green-400">{'>'}</span> 
+              <span>cd /portfolio/projects</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
+              My <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400">Projects</span>
+            </h1>
+            <p className="text-xl text-slate-400 max-w-3xl leading-relaxed">
+              A collection of {stats.total} projects showcasing my journey in software development, from web applications to machine learning and cloud infrastructure.
+            </p>
+          </header>
+        )}
 
         {/* Stats */}
         {!featuredOnly && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-          >
-            <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">{stats.total}</div>
-              <div className="text-sm opacity-70">Total Projects</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 font-mono">
+            <div className="p-6 bg-[#050508] border border-green-500/20">
+              <div className="text-xs text-slate-500 mb-2 uppercase tracking-widest">{'>'} count --total</div>
+              <div className="text-3xl font-bold text-green-400">{stats.total}</div>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
-              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">{stats.featured}</div>
-              <div className="text-sm opacity-70">Featured</div>
+            <div className="p-6 bg-[#050508] border border-cyan-500/20">
+              <div className="text-xs text-slate-500 mb-2 uppercase tracking-widest">{'>'} count --featured</div>
+              <div className="text-3xl font-bold text-cyan-400">{stats.featured}</div>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
-              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">{stats.categories}</div>
-              <div className="text-sm opacity-70">Categories</div>
+            <div className="p-6 bg-[#050508] border border-green-500/20">
+              <div className="text-xs text-slate-500 mb-2 uppercase tracking-widest">{'>'} count --categories</div>
+              <div className="text-3xl font-bold text-green-400">{stats.categories}</div>
             </div>
-            <div className="text-center p-6 rounded-2xl bg-white/5 border border-white/10">
-              <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">{stats.technologies}</div>
-              <div className="text-sm opacity-70">Technologies</div>
+            <div className="p-6 bg-[#050508] border border-cyan-500/20">
+              <div className="text-xs text-slate-500 mb-2 uppercase tracking-widest">{'>'} count --tech</div>
+              <div className="text-3xl font-bold text-cyan-400">{stats.technologies}</div>
             </div>
-          </motion.div>
+          </div>
         )}
 
         {/* Filters */}
         {!featuredOnly && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-8 space-y-4"
-          >
+          <div className="mb-12 space-y-6 font-mono bg-[#050508] border border-slate-800 p-6">
+            <div className="flex items-center gap-2 text-slate-400 text-sm mb-4">
+              <span className="text-green-400">{'>'}</span> ./filter_projects.sh
+            </div>
             {/* Category Filter */}
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-3">Filter by Category</label>
+              <label className="block text-xs uppercase tracking-widest text-slate-500 mb-3">--category</label>
               <div className="flex flex-wrap gap-2">
                 {categories.map(category => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    className={`px-3 py-1.5 text-xs font-bold uppercase tracking-widest transition-all border ${
                       selectedCategory === category
-                        ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white'
-                        : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
+                        ? 'bg-green-400 text-black border-green-400'
+                        : 'bg-black border-slate-700 text-slate-400 hover:border-green-400 hover:text-green-400'
                     }`}
                   >
                     {category}
@@ -215,17 +198,17 @@ export default function Projects({ featuredOnly = false }) {
 
             {/* Year Filter */}
             {years.length > 1 && (
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">Filter by Year</label>
+              <div className="pt-4 border-t border-slate-800 mt-4">
+                <label className="block text-xs uppercase tracking-widest text-slate-500 mb-3">--year</label>
                 <div className="flex flex-wrap gap-2">
                   {years.map(year => (
                     <button
                       key={year}
                       onClick={() => setSelectedYear(year)}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                      className={`px-3 py-1.5 text-xs font-bold uppercase tracking-widest transition-all border ${
                         selectedYear === year
-                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                          : 'bg-white/5 border border-white/10 text-gray-300 hover:bg-white/10'
+                          ? 'bg-cyan-400 text-black border-cyan-400'
+                          : 'bg-black border-slate-700 text-slate-400 hover:border-cyan-400 hover:text-cyan-400'
                       }`}
                     >
                       {year}
@@ -234,42 +217,33 @@ export default function Projects({ featuredOnly = false }) {
                 </div>
               </div>
             )}
-          </motion.div>
+          </div>
         )}
 
         {/* Projects Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
-        >
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} p={project} index={index} />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {filteredProjects.map((project) => (
+            <ProjectCard key={project.id} p={project} />
           ))}
-        </motion.div>
+        </div>
 
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-400">No projects found matching your filters.</p>
+          <div className="text-center py-20 font-mono bg-[#050508] border border-red-500/30 mt-8">
+            <p className="text-lg text-red-400 mb-4">[ERR] 404: NO_PROJECTS_FOUND</p>
             <button
               onClick={() => {
                 setSelectedCategory('All')
                 setSelectedYear('All')
               }}
-              className="mt-4 px-6 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white transition-colors"
+              className="px-6 py-2 border border-slate-600 hover:border-green-400 hover:text-green-400 text-slate-300 transition-colors uppercase tracking-widest text-xs"
             >
-              Clear Filters
+              ./clear_filters.sh
             </button>
           </div>
         )}
       </div>
     </div>
   )
-
-  if (featuredOnly) {
-    return content
-  }
 
   return content
 }

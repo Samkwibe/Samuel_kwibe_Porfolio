@@ -1,5 +1,3 @@
-
-
 const items = [
   { name: "Teammate", role: "SNHU Project Partner", quote: "Sam delivers. Clear communicator, dependable, and pushes the team to finish strong." },
   { name: "Supervisor", role: "Operations Lead", quote: "Detail-oriented and proactive. He improves processes and maintains quality under pressure." },
@@ -7,13 +5,22 @@ const items = [
 
 export default function Testimonials() {
   return (
-    <main className="container my-12 flex-1">
-      <h1 className="text-3xl font-bold mb-6">Testimonials</h1>
-      <div className="grid md:grid-cols-2 gap-5">
+    <main className="max-w-5xl mx-auto my-16 px-4 flex-1 font-mono">
+      <div className="text-sm mb-6 flex items-center gap-2 text-slate-400">
+        <span className="text-green-400">{'>'}</span> 
+        <span>tail -f testimonials.log</span>
+      </div>
+      <h1 className="text-4xl font-bold mb-8 text-white tracking-tight">Testimonials</h1>
+      <div className="grid md:grid-cols-2 gap-6">
         {items.map((t, i) => (
-          <div key={i} className="glass-panel p-6 rounded-2xl">
-            <p className="text-neutral-200/90">“{t.quote}”</p>
-            <p className="mt-4 text-sm opacity-70">— {t.name}, {t.role}</p>
+          <div key={i} className="bg-[#050508] border border-green-500/20 p-8 rounded-none relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-1 h-full bg-green-500/50 group-hover:bg-green-400 transition-colors" />
+            <p className="text-slate-300 leading-relaxed mb-6">"{t.quote}"</p>
+            <div className="flex items-center gap-2 text-xs uppercase tracking-widest">
+              <span className="text-green-400 font-bold">{t.name}</span>
+              <span className="text-slate-600">//</span>
+              <span className="text-slate-400">{t.role}</span>
+            </div>
           </div>
         ))}
       </div>

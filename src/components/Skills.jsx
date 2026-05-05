@@ -1,69 +1,51 @@
-import { motion } from 'framer-motion'
-
 export default function Skills() {
   const groups = [
-    { name: "Programming", items: ["Python", "JavaScript", "TypeScript", "React", "HTML", "CSS"], icon: "💻" },
-    { name: "Cloud & DevOps", items: ["AWS", "GCP", "Azure", "Docker", "CI/CD", "Kubernetes"], icon: "☁️" },
-    { name: "AI & Data", items: ["scikit-learn", "Pandas", "NumPy", "TensorFlow", "PyTorch"], icon: "🧠" },
-    { name: "Tools & Systems", items: ["Git", "Linux", "VS Code", "Jupyter", "PostgreSQL"], icon: "⚙️" },
+    { name: "Programming", items: ["Python", "JavaScript", "TypeScript", "React", "HTML", "CSS"], icon: "sys.lang" },
+    { name: "Cloud & DevOps", items: ["AWS", "GCP", "Azure", "Docker", "CI/CD", "Kubernetes"], icon: "sys.cloud" },
+    { name: "AI & Data", items: ["scikit-learn", "Pandas", "NumPy", "TensorFlow", "PyTorch"], icon: "sys.ai" },
+    { name: "Tools & Systems", items: ["Git", "Linux", "VS Code", "Jupyter", "PostgreSQL"], icon: "sys.tools" },
   ]
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  }
-
   return (
-    <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-16 md:py-20">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="max-w-6xl mx-auto"
-      >
-        <div className="text-center mb-12">
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-gradient">Technical Arsenal</span>
-          </motion.h2>
-          <motion.p variants={itemVariants} className="text-neutral-400 max-w-2xl mx-auto">
+    <section className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 py-16 md:py-20 bg-[#0a0a0e] border-t border-green-500/10 font-mono">
+      <div className="max-w-6xl mx-auto">
+        
+        <header className="mb-12 border-b border-green-500/20 pb-8">
+          <div className="text-sm mb-4 flex items-center gap-2 text-slate-400">
+            <span className="text-green-400">{'>'}</span> 
+            <span>source skills.sh</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight">
+            Technical Arsenal
+          </h2>
+          <p className="text-slate-400 max-w-2xl">
             A comprehensive overview of my technical skills, tools, and platforms I use to bring ideas to life.
-          </motion.p>
-        </div>
+          </p>
+        </header>
 
         <div className="grid md:grid-cols-2 gap-6">
           {groups.map((g, i) => (
-            <motion.div key={i} variants={itemVariants} className="glass-panel p-8 rounded-3xl hover:border-indigo-500/30 transition-all duration-300">
+            <div key={i} className="bg-[#050508] border border-green-500/20 p-8 hover:border-green-400 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(74,222,128,0.15)] rounded-none">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-2xl shadow-inner border border-white/10">
-                  {g.icon}
+                <div className="px-2 py-1 bg-black border border-green-500/30 text-xs text-green-400 tracking-widest uppercase">
+                  [{g.icon}]
                 </div>
-                <h3 className="text-2xl font-bold">{g.name}</h3>
+                <h3 className="text-2xl font-bold text-white group-hover:text-green-400">{g.name}</h3>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {g.items.map((s, j) => (
                   <span 
                     key={j} 
-                    className="px-4 py-2 rounded-full text-sm font-medium bg-white/5 border border-white/10 hover:bg-indigo-500/20 hover:border-indigo-500/50 hover:text-indigo-300 transition-all cursor-default"
+                    className="px-2 py-1 text-xs uppercase tracking-wider bg-black border border-green-500/30 text-green-400 hover:bg-green-400 hover:text-black transition-colors cursor-default"
                   >
                     {s}
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

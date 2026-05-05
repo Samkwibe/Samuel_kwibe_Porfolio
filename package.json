@@ -1,9 +1,12 @@
 {
+  "homepage": "https://samkwibe.github.io/Samuel_kwibe_Porfolio",
   "name": "sam-portfolio",
   "private": true,
   "version": "0.0.2",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -20,6 +23,7 @@
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.20",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.0"

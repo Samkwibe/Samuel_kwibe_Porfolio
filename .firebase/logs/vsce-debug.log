@@ -1,0 +1,31 @@
+[debug] [2026-02-28T03:45:39.289Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2026-02-28T03:45:47.086Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2026-02-28T03:45:47.087Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-02-28T03:45:47.087Z] > authorizing via signed-in user (kwibesamuel@gmail.com)
+[debug] [2026-02-28T03:45:47.089Z] Checked if tokens are valid: false, expires at: 1772219521839
+[debug] [2026-02-28T03:45:47.089Z] Checked if tokens are valid: false, expires at: 1772219521839
+[debug] [2026-02-28T03:45:47.089Z] > refreshing access token with scopes: []
+[debug] [2026-02-28T03:45:47.090Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-02-28T03:45:47.090Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 3.0.0) on port 50001
+[debug] [2026-02-28T03:45:47.965Z] 'fdc build' failed with error: Unable to build your Data Connect schema and connectors (exit code 1): E0227 22:45:47.964145   51614 cmd.go:43] Error loading data connect config: could not find dataconnect.yaml in `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"'fdc build' failed with error: Unable to build your Data Connect schema and connectors (exit code 1): E0227 22:45:47.964145   51614 cmd.go:43] Error loading data connect config: could not find dataconnect.yaml in `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`\n"}}
+[debug] [2026-02-28T03:45:47.966Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2026-02-28T03:45:47.966Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2026-02-28T03:45:47.966Z] Starting Data Connect Emulator with command {"binary":"/Users/samuelraymond/.cache/firebase/emulators/dataconnect-emulator-3.0.0","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/Users/samuelraymond/.cache/firebase/emulators/dataconnect-emulator-3.0.0\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to dataconnect-debug.log"}}
+[debug] [2026-02-28T03:45:48.001Z] E0227 22:45:47.990406   51615 dev.go:83] Failed to load initial config from "/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect": could not find dataconnect.yaml in `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`
+E0227 22:45:47.990798   51615 watch.go:116] watchAllDir unable to walk dir `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`: lstat /Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect: no such file or directory
+I0227 22:45:47.991714   51615 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"E0227 22:45:47.990406   51615 dev.go:83] Failed to load initial config from \"/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect\": could not find dataconnect.yaml in `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`\nE0227 22:45:47.990798   51615 watch.go:116] watchAllDir unable to walk dir `/Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect`: lstat /Users/samuelraymond/Documents/samuel_kwibe_Portfolio/dataconnect: no such file or directory\nI0227 22:45:47.991714   51615 dev.go:104] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2026-02-28T03:45:49.356Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-02-28T03:45:49.356Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-02-28T03:45:49.369Z] [Firebase Plugin] User found:  kwibesamuel@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2026-02-28T03:45:49.369Z] Checked if tokens are valid: true, expires at: 1772253948356
+[debug] [2026-02-28T03:45:49.370Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[error] [Firebase Plugin] error:  {}
+[debug] [2026-02-28T03:45:50.681Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2026-02-28T03:45:50.681Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] [Firebase Plugin] Stopping Data Connect toolkit
+[warn] ⚠  Data Connect Emulator has exited upon receiving signal: SIGINT 

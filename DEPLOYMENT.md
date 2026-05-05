@@ -5,6 +5,7 @@
 ### Option 1: Vercel (Easiest - Recommended)
 
 1. **Push to GitHub**
+
    ```bash
    git init
    git add .
@@ -14,6 +15,7 @@
    ```
 
 2. **Deploy on Vercel**
+
    - Go to [vercel.com](https://vercel.com)
    - Sign up/Login with GitHub
    - Click "New Project"
@@ -26,7 +28,7 @@
    - Copy your Vercel URL (e.g., `https://your-portfolio.vercel.app`)
    - Update `src/components/Contact.jsx`:
      ```javascript
-     portfolio: "https://your-portfolio.vercel.app"
+     portfolio: "https://your-portfolio.vercel.app";
      ```
    - Commit and push changes
    - Vercel will auto-deploy the update
@@ -36,6 +38,7 @@
 1. **Push to GitHub** (same as above)
 
 2. **Deploy on Netlify**
+
    - Go to [netlify.com](https://netlify.com)
    - Sign up/Login with GitHub
    - Click "Add new site" → "Import an existing project"
@@ -49,18 +52,21 @@
 ### Option 3: GitHub Pages
 
 1. **Install gh-pages**
+
    ```bash
    npm install --save-dev gh-pages
    ```
 
 2. **Update package.json**
    Add to scripts:
+
    ```json
    "predeploy": "npm run build",
    "deploy": "gh-pages -d dist"
    ```
 
 3. **Deploy**
+
    ```bash
    npm run deploy
    ```
@@ -99,14 +105,17 @@ Before deploying, make sure:
 ## 🔧 Post-Deployment Steps
 
 1. **Update Portfolio URL**
+
    - Edit `src/components/Contact.jsx`
    - Update `portfolio: "YOUR_DEPLOYED_URL"`
 
 2. **Add Calendly Link** (Optional)
+
    - Edit `src/components/Contact.jsx`
    - Update `calendly: "YOUR_CALENDLY_URL"`
 
 3. **Test Everything**
+
    - [ ] All pages load correctly
    - [ ] Resume downloads work
    - [ ] All project images display
@@ -123,21 +132,25 @@ Before deploying, make sure:
 ## 🐛 Troubleshooting
 
 ### Build Fails
+
 - Check Node version (should be 16+)
 - Delete `node_modules` and `package-lock.json`
 - Run `npm install` again
 - Check for TypeScript errors
 
 ### Images Not Loading
+
 - Ensure images are in `/public` folder
 - Check image paths in `projects.js` start with `/`
 - Verify file names match exactly (case-sensitive)
 
 ### 404 Errors on Routes
+
 - Ensure SPA routing is configured (already done in `vercel.json` and `netlify.toml`)
 - For GitHub Pages, you may need a custom 404.html
 
 ### Resume Download Not Working
+
 - Verify file exists in `/public` folder
 - Check file name matches exactly: `Samuel_Kwibe_Resume_Final.docx`
 - Ensure links use `/Samuel_Kwibe_Resume_Final.docx` (with leading slash)
@@ -158,6 +171,7 @@ Before deploying, make sure:
 ## 📞 Need Help?
 
 If you encounter issues:
+
 1. Check the platform's deployment logs
 2. Verify all files are committed to Git
 3. Ensure build command works locally first
