@@ -6,6 +6,14 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/Samuel_kwibe_Porfolio/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/Samuel_kwibe_Porfolio/repo_images_bundle/(.*)",
+      "destination": "/repo_images_bundle/$1"
+    },
+    {
       "source": "/Samuel_kwibe_Porfolio/api/chat",
       "destination": "/api/chat"
     },
