@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Samuel Kwibe",
+    "slug": "samuel-kwibe-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.samuelkwibe.portfolio",
+      "buildNumber": "1",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.samuelkwibe.portfolio"
+    },
+    "extra": {
+      "portfolioSource": "samuel_kwibe_Portfolio",
+      "eas": {
+        "projectId": "3186ded7-51ce-4cb9-8399-362d5781b6d5"
+      }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ]
+    ]
+  }
+}

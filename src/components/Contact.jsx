@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { profile } from '../data/profile.js'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -6,6 +7,9 @@ export default function Contact() {
   
   const handleSend = (e) => {
     e.preventDefault()
+    const subject = encodeURIComponent(`Portfolio message from ${form.name}`)
+    const body = encodeURIComponent(`${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`)
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
     setSent(true)
     setTimeout(() => setSent(false), 3000)
     setForm({ name: '', email: '', message: '' })
@@ -16,6 +20,9 @@ export default function Contact() {
     return (
       <div className="mb-6">
         <Comp 
+          id={id}
+          name={id}
+          aria-label={placeholder}
           value={form[id]}
           onChange={e => setForm(f => ({...f, [id]: e.target.value}))}
           type={type}
@@ -44,7 +51,7 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 border-b border-green-500/20 pb-4 hover:border-green-400/50 transition-colors group">
                 <span className="text-slate-500 w-24 group-hover:text-green-400 transition-colors">$ email</span>
-                <a href="mailto:kwibesamuel@gmail.com" className="text-green-400 hover:text-white transition-colors">kwibesamuel@gmail.com</a>
+                <a href={`mailto:${profile.email}`} className="text-green-400 hover:text-white transition-colors">{profile.email}</a>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 border-b border-green-500/20 pb-4 hover:border-green-400/50 transition-colors group">
                 <span className="text-slate-500 w-24 group-hover:text-green-400 transition-colors">$ phone</span>
@@ -67,11 +74,11 @@ export default function Contact() {
             <div className="space-y-6">
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 border-b border-green-500/20 pb-4 hover:border-green-400/50 transition-colors group">
                 <span className="text-slate-500 w-24 group-hover:text-green-400 transition-colors">$ github</span>
-                <a href="https://github.com/Samkwibe" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors">github.com/Samkwibe</a>
+                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors">github.com/Samkwibe</a>
               </div>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 border-b border-green-500/20 pb-4 hover:border-green-400/50 transition-colors group">
                 <span className="text-slate-500 w-24 group-hover:text-green-400 transition-colors">$ linkedin</span>
-                <a href="https://www.linkedin.com/in/samuel-kwibe-371633249/" target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors">linkedin.com/in/samuel-kwibe</a>
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-white transition-colors">linkedin.com/in/samuel-kwibe</a>
               </div>
             </div>
           </div>
@@ -102,7 +109,7 @@ export default function Contact() {
                 [MESSAGE TRANSMITTED]
               </div>
               <p className="text-slate-400 mt-4 text-xs">
-                I will get back to you within 24 hours.
+                Your email app should open with the message ready to send.
               </p>
             </div>
           ) : (

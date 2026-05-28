@@ -14,6 +14,7 @@ const links = [
 export default function Navbar() {
   const { pathname } = useLocation()
   const [time, setTime] = useState(new Date().toLocaleTimeString('en-US', { hour12: false }))
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -21,6 +22,10 @@ export default function Navbar() {
     }, 1000)
     return () => clearInterval(timer)
   }, [])
+
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
 
   return (
     <header className="sticky top-0 w-full z-30 px-4 py-2 md:py-4 bg-[#050508]/90 backdrop-blur-md border-b border-green-500/30 font-mono shadow-[0_4px_30px_rgba(0,0,0,0.8)] border-glow">
@@ -74,10 +79,44 @@ export default function Navbar() {
               wget resume
             </a>
           </nav>
-          <button className="md:hidden p-2 text-green-400 hover:text-white transition-colors border border-green-500/50 bg-black shadow-[0_0_10px_rgba(74,222,128,0.2)]" aria-label="Menu">
+          <button
+            className="md:hidden p-2 text-green-400 hover:text-white transition-colors border border-green-500/50 bg-black shadow-[0_0_10px_rgba(74,222,128,0.2)]"
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(open => !open)}
+          >
             <Menu size={20} />
           </button>
         </div>
+
+        {isMenuOpen && (
+          <nav className="md:hidden grid gap-2 border-t border-green-500/20 pt-3 pb-2 text-sm">
+            {links.map((l) => {
+              const isActive = pathname === l.to
+              return (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className={`px-3 py-2 uppercase tracking-widest text-xs border ${
+                    isActive
+                      ? 'text-black bg-green-400 border-green-400 font-bold'
+                      : 'text-green-400 border-green-500/30 bg-green-400/5'
+                  }`}
+                >
+                  {l.special && <Terminal size={12} className="inline mr-1 -mt-0.5" />}
+                  {l.label}
+                </Link>
+              )
+            })}
+            <a
+              className="px-3 py-2 border border-green-500/30 text-green-400 bg-green-400/5 uppercase tracking-widest text-xs font-bold"
+              href="/Samuel_Kwibe_Resume_Final.docx"
+              download="Samuel_Kwibe_Resume_Final.docx"
+            >
+              wget resume
+            </a>
+          </nav>
+        )}
       </div>
     </header>
   )

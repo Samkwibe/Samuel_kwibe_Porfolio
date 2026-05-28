@@ -1,14 +1,22 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
-import { SYSTEM_PROMPT } from '../data/samuelContext.js'
 
-const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
-const MODEL = 'google/gemini-2.0-flash-001'
+const AI_CHAT_API_URLS = Array.from(new Set([
+  '/api/chat',
+  `${import.meta.env.BASE_URL}api/chat`
+]))
 
 const ASCII_BANNER = `
  ╔══════════════════════════════════════════════════════╗
  ║          SAMUEL KWIBE — PORTFOLIO TERMINAL           ║
  ║  AI-powered interface • Type 'help' to get started   ║
  ╚══════════════════════════════════════════════════════╝`
+
+const SUGGESTED_PROMPTS = [
+  'What makes Samuel a strong software engineering candidate?',
+  'What projects show Samuel has full-stack experience?',
+  'Explain REST APIs in simple terms',
+  'How can I contact Samuel?'
+]
 
 const BUILT_IN_COMMANDS = {
   help: () => `Available commands:
@@ -19,11 +27,12 @@ const BUILT_IN_COMMANDS = {
   about      — Quick bio
   clear      — Clear terminal history
   
-Or just type any question about Samuel and the AI will answer!
+Or just type any question and the AI will answer!
 Examples:
   "What ML projects has Samuel built?"
   "Tell me about his cloud experience"
-  "What's his tech stack?"`,
+  "What's his tech stack?"
+  "Explain REST APIs in simple terms"`,
 
   about: () => `Samuel Kwibe
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -122,15 +131,13 @@ export default function AiTerminal() {
   const [history, setHistory] = useState([
     { type: 'banner', text: ASCII_BANNER },
     { type: 'system', text: 'Terminal initialized. Connected to AI backend via OpenRouter.' },
-    { type: 'system', text: 'Type "help" for available commands, or ask anything about Samuel.' },
+    { type: 'system', text: 'Type "help" for available commands, or ask any question.' },
   ])
   const [input, setInput] = useState('')
   const [isStreaming, setIsStreaming] = useState(false)
   const [conversationMessages, setConversationMessages] = useState([])
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
-
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -168,29 +175,38 @@ export default function AiTerminal() {
     setIsStreaming(true)
 
     try {
-      const response = await fetch(OPENROUTER_API_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': window.location.origin,
-          'X-Title': 'Samuel Kwibe Portfolio Terminal'
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          messages: [
-            { role: 'system', content: SYSTEM_PROMPT },
-            ...newMessages
-          ],
-          stream: true,
-          max_tokens: 1024,
-          temperature: 0.7
-        })
-      })
+      const requestBody = JSON.stringify({ messages: newMessages })
+      let response
+      let lastError
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.error?.message || `API error: ${response.status}`)
+      for (const apiUrl of AI_CHAT_API_URLS) {
+        try {
+          const candidateResponse = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: requestBody
+          })
+
+          if (!candidateResponse.ok) {
+            const errorData = await candidateResponse.json().catch(() => ({}))
+            throw new Error(errorData.error || `AI backend error: ${candidateResponse.status}`)
+          }
+
+          response = candidateResponse
+          break
+        } catch (err) {
+          lastError = err
+        }
+      }
+
+      if (!response) {
+        throw lastError || new Error('The AI backend is unavailable.')
+      }
+
+      if (!response.body) {
+        throw new Error('The AI backend did not return a response stream.')
       }
 
       const reader = response.body.getReader()
@@ -210,15 +226,28 @@ export default function AiTerminal() {
 
           try {
             const parsed = JSON.parse(data)
+
+            if (parsed.error) {
+              throw new Error(parsed.error.message || 'The AI provider returned a stream error.')
+            }
+
             const delta = parsed.choices?.[0]?.delta?.content
             if (delta) {
               fullText += delta
               updateLastEntry({ text: fullText, streaming: true })
             }
-          } catch {
-            // Skip malformed chunks
+          } catch (err) {
+            if (err instanceof SyntaxError) {
+              continue
+            }
+
+            throw err
           }
         }
+      }
+
+      if (!fullText.trim()) {
+        throw new Error('The AI provider did not return a response. Please try again.')
       }
 
       // Finalize
@@ -228,15 +257,18 @@ export default function AiTerminal() {
         { role: 'assistant', content: fullText }
       ])
     } catch (err) {
-      updateLastEntry({ type: 'error', text: err.message, streaming: false })
+      const message = err.message?.includes('Failed to fetch')
+        ? 'The AI backend is not available. Deploy with /api/chat support and set OPENROUTER_API_KEY on the server.'
+        : err.message
+
+      updateLastEntry({ type: 'error', text: message, streaming: false })
     } finally {
       setIsStreaming(false)
     }
-  }, [apiKey, conversationMessages, addEntry, updateLastEntry])
+  }, [conversationMessages, addEntry, updateLastEntry])
 
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault()
-    const trimmed = input.trim()
+  const submitPrompt = useCallback((value) => {
+    const trimmed = value.trim()
     if (!trimmed || isStreaming) return
 
     setInput('')
@@ -262,18 +294,14 @@ export default function AiTerminal() {
       return
     }
 
-    // Check API key
-    if (!apiKey || apiKey === 'your_key_here') {
-      addEntry({
-        type: 'error',
-        text: 'OpenRouter API key not configured. Add your key to the .env file as VITE_OPENROUTER_API_KEY and restart the dev server.'
-      })
-      return
-    }
-
     // Send to AI
     handleStreamingResponse(trimmed)
-  }, [input, isStreaming, apiKey, addEntry, handleStreamingResponse])
+  }, [isStreaming, addEntry, handleStreamingResponse])
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault()
+    submitPrompt(input)
+  }, [input, submitPrompt])
 
   return (
     <div
@@ -333,9 +361,26 @@ export default function AiTerminal() {
         </form>
       </div>
 
+      <div className="flex flex-wrap justify-center gap-2 mt-4">
+        {SUGGESTED_PROMPTS.map((prompt) => (
+          <button
+            key={prompt}
+            type="button"
+            disabled={isStreaming}
+            onClick={(e) => {
+              e.stopPropagation()
+              submitPrompt(prompt)
+            }}
+            className="border border-green-500/30 bg-green-400/5 px-3 py-2 text-[11px] text-green-300 font-mono hover:bg-green-400 hover:text-black hover:border-green-300 disabled:opacity-40 disabled:hover:bg-green-400/5 disabled:hover:text-green-300 transition-colors"
+          >
+            {prompt}
+          </button>
+        ))}
+      </div>
+
       {/* Footer hint */}
       <div className="text-center text-[10px] text-slate-600 mt-3 font-mono">
-        Powered by OpenRouter AI • Responses are generated and may not be 100% accurate
+        Powered by a protected OpenRouter proxy • Responses are generated and may not be 100% accurate
       </div>
     </div>
   )

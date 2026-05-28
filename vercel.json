@@ -6,6 +6,10 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/Samuel_kwibe_Porfolio/api/chat",
+      "destination": "/api/chat"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

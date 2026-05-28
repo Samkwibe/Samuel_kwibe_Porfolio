@@ -8,6 +8,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -t",
     "dev": "vite",
+    "dev:full": "node scripts/dev-server.js",
     "build": "vite build",
     "preview": "vite preview"
   },

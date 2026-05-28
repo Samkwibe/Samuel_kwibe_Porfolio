@@ -1,0 +1,30 @@
+{
+  "name": "samuel-kwibe-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "start:go": "expo start --go",
+    "start:dev-client": "expo start --dev-client",
+    "ios": "expo start --ios",
+    "ios:go": "expo start --ios --go",
+    "android": "expo start --android",
+    "web": "expo start --web",
+    "build:ios:dev": "eas build --platform ios --profile development",
+    "build:ios:preview": "eas build --platform ios --profile preview",
+    "build:ios:simulator": "eas build --platform ios --profile simulator"
+  },
+  "dependencies": {
+    "expo": "~54.0.0",
+    "expo-build-properties": "~1.0.10",
+    "expo-dev-client": "~6.0.21",
+    "expo-linear-gradient": "~15.0.8",
+    "firebase": "^12.13.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
