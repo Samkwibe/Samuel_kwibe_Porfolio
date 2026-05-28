@@ -94,11 +94,16 @@ export default function HomePage() {
               <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-green-400 translate-x-[2px] translate-y-[2px]" />
 
               <div className="w-full h-full relative overflow-hidden grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700">
-                <img
-                  src={`${import.meta.env.BASE_URL}${graduationImages[currentImageIndex].replace(/^\\//, '')}`}
-                  alt="Samuel Graduation"
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100"
-                />
+                {(() => {
+                  const imgPath = graduationImages[currentImageIndex].replace(/^\//, '');
+                  return (
+                    <img
+                      src={`${import.meta.env.BASE_URL}${imgPath}`}
+                      alt="Samuel Graduation"
+                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100"
+                    />
+                  );
+                })()}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#000]/90 via-[#000]/20 to-transparent" />
                 
                 <div className="absolute bottom-4 left-4 right-4">

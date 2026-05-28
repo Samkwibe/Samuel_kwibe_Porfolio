@@ -8,6 +8,7 @@ const links = [
   { to: '/projects', label: './portfolio' },
   { to: '/testimonials', label: './testimonials' },
   { to: '/contact', label: './contact' },
+  { to: '/terminal', label: './ai-terminal', special: true },
 ]
 
 export default function Navbar() {
@@ -50,8 +51,17 @@ export default function Navbar() {
                 <Link
                   key={l.to}
                   to={l.to}
-                  className={`relative px-2 py-1 transition-colors uppercase tracking-widest text-xs ${isActive ? 'text-green-400 bg-green-400/10 border border-green-400/50 text-glow border-glow' : 'text-slate-500 hover:text-green-400 hover:text-glow'}`}
+                  className={`relative px-2 py-1 transition-colors uppercase tracking-widest text-xs ${
+                    l.special
+                      ? isActive
+                        ? 'text-black bg-green-400 border border-green-400 font-bold shadow-[0_0_15px_rgba(74,222,128,0.6)]'
+                        : 'text-green-400 border border-green-500/50 bg-green-400/10 hover:bg-green-400 hover:text-black font-bold shadow-[0_0_10px_rgba(74,222,128,0.3)] hover:shadow-[0_0_20px_rgba(74,222,128,0.6)] animate-pulse'
+                      : isActive
+                        ? 'text-green-400 bg-green-400/10 border border-green-400/50 text-glow border-glow'
+                        : 'text-slate-500 hover:text-green-400 hover:text-glow'
+                  }`}
                 >
+                  {l.special && <Terminal size={12} className="inline mr-1 -mt-0.5" />}
                   {l.label}
                 </Link>
               )

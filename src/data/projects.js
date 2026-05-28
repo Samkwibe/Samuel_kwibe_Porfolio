@@ -22,23 +22,183 @@
 export const projects = [
   // ========== FEATURED / MAJOR PROJECTS ==========
   {
+    id: "skillrise",
+    name: "SkillRise",
+    category: "Full-Stack Web Application",
+    tech: ["Next.js", "React", "TypeScript", "AI", "Live Cohorts", "Job Discovery"],
+    summary: "Full-stack Next.js platform for personalized learning, job discovery, live cohorts, and community-driven skill building with AI-assisted features.",
+    description: "Built SkillRise as a full-stack learning and career platform where users can learn practical skills, get personalized guidance, discover job opportunities, join live cohorts, and build community support. The experience is designed as an alternative to endless scrolling, with AI-assisted features that help learners find relevant paths and take action.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/SkillRise.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Personalized learning paths",
+      "AI-assisted skill guidance",
+      "Job discovery experience",
+      "Live cohorts and community learning",
+      "Modern full-stack Next.js interface"
+    ]
+  },
+  {
+    id: "beacon-nh",
+    name: "Beacon-NH",
+    category: "Full-Stack Web Application",
+    tech: ["React", "TypeScript", "Vite", "Node.js", "MySQL", "Firebase", "i18n", "AI"],
+    summary: "Full-stack React platform connecting refugees in New Hampshire with emergency housing, legal aid, community resources, live translation, and an administrative dashboard.",
+    description: "Built Beacon-NH as a student-led React and TypeScript platform grounded in real New Hampshire refugee-admissions context. The app routes visitors to verifiable programs including 211 NH, 603 Legal Aid, NH Legal Assistance, NH DHHS, Ascentria, IINE, NH Food Bank, and other community partners. The stack pairs a Vite SPA with an optional Node and MySQL API plus Firebase for events, chat, authentication, and announcements when configured.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Beacon-NH.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Routes refugees to verified New Hampshire support programs",
+      "Multilingual i18n support for en, ar, fr, uk, sw, ne, and rw",
+      "Events and RSVPs through MySQL, Firestore, or local demos",
+      "Optional AI helper using Gemini or OpenAI through the API",
+      "Gated admin dashboard with Firebase Authentication"
+    ]
+  },
+  {
+    id: "cs330-computational-graphics",
+    name: "CS-330 Computational Graphics Portfolio",
+    category: "Graphics & Visualization",
+    tech: ["C++", "OpenGL", "GLSL", "Phong Shading", "Texture Mapping", "3D Camera Systems"],
+    summary: "Semester-long computational graphics portfolio that grew from OpenGL setup into a fully navigable 3D modern office building and a physics-based 2D collision animation.",
+    description: "Completed a full CS-330 graphics portfolio at Southern New Hampshire University, starting with OpenGL setup and progressing through transformations, texture mapping, lighting, camera controls, collision detection, and animation. The final 3D project is a modern office building built from primitive shapes with more than 100 objects, 10 textures, 8 materials, 11 light sources, full Phong shading, three camera modes, wall-sliding collision, teleport controls, spinning ceiling fans, and detailed interior rooms. The course also included a brick-breaker style 2D collision animation with physics-based bouncing, gravity toggle, power bricks, score tracking, and paddle controls.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/CS330-Computational-Graphics.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Built a fully navigable 3D modern office building from scratch",
+      "Created 100+ objects using primitive shapes and transformations",
+      "Implemented texture mapping, tiled materials, and full Phong lighting",
+      "Added orbit, free-roam, and classic camera modes with collision detection",
+      "Built a 2D collision animation with physics, gravity, power-ups, and scoring"
+    ]
+  },
+  {
+    id: "food-waste-recipe-inventory",
+    name: "Food Waste Recipe Inventory App",
+    category: "Full-Stack Web Application",
+    tech: ["React", "Node.js", "Express", "Barcode APIs", "TheMealDB", "Database", "REST APIs"],
+    summary: "Food waste reduction dashboard that scans groceries, tracks ingredient history, monitors expiration timing, and suggests recipes from available food.",
+    description: "Worked on a team project focused on reducing household food waste, where the average American throws away about $2,000 worth of edible food each year. The app helps users manage food inventory by scanning grocery barcodes, tracking items brought into the home, recording purchase time, storing scanned ingredients in a database, adding expiration timers, and suggesting recipes based on available ingredients, items nearing expiration, and user preferences. My role focused on backend work with Jon, fixing API behavior, keeping the project running smoothly, and supporting the scanned-item database flow.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Food-Waste-Recipe-Inventory.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Connected barcode lookup so scanned UPCs resolve to product data",
+      "Tracked scanned items, purchase time, and product history",
+      "Integrated TheMealDB for ingredient-based recipe suggestions",
+      "Planned expiration timers for ingredients nearing spoilage",
+      "Collaborated across backend, frontend, testing, iOS/Android planning, and landing page design"
+    ]
+  },
+  {
+    id: "cs305-artemis-financial-security",
+    name: "CS-305 Artemis Financial Security Assessment",
+    category: "Software Security",
+    tech: ["Java", "Spring Boot", "Spring Security", "Maven", "OWASP Dependency-Check", "SHA-256", "SSL/HTTPS"],
+    summary: "Software security portfolio for Artemis Financial demonstrating vulnerability assessment, dependency analysis, HTTPS implementation, and SHA-256 hashing.",
+    description: "Completed a software security assessment for Artemis Financial, a fictional financial services client that needed stronger protection for sensitive personal and financial data. The work included running OWASP Dependency-Check, researching CVEs, prioritizing vulnerabilities by real-world risk, configuring HTTPS with SSL in a Java Spring Boot application, adding SHA-256 checksum hashing for data integrity, and re-running scans after refactoring to verify no new vulnerabilities were introduced.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/CS305-Artemis-Financial-Security.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Performed vulnerability assessment with OWASP Dependency-Check",
+      "Researched CVEs and prioritized findings by real application risk",
+      "Implemented HTTPS using SSL and Spring Security",
+      "Added SHA-256 cryptographic hashing for integrity verification",
+      "Produced professional security reports for stakeholder communication"
+    ]
+  },
+  {
     id: "family-housing-hub",
     name: "Family Housing Hub",
     category: "Full-Stack Web Application",
-    tech: ["React.js", "Firebase", "Firestore", "Firebase Auth", "HTML5", "CSS3"],
-    summary: "Comprehensive housing assistance platform with multilingual support (English, Spanish, Portuguese) for families seeking housing resources. Features secure authentication, real-time database synchronization, and WCAG 2.1 accessibility compliance.",
-    description: "Developed a comprehensive housing assistance platform with React.js frontend and Firebase backend for multilingual families. Implemented secure authentication with Firebase Auth and real-time database synchronization using Firestore, supporting 100+ concurrent users. Designed responsive UI/UX with multilingual support and accessibility features.",
+    tech: ["React.js", "Firebase", "Firestore", "Firebase Auth", "WCAG 2.1", "HTML5", "CSS3"],
+    summary: "Multilingual housing and family wellbeing platform with rent tracking, maintenance requests, document storage, health appointments, medication reminders, emergency alerts, and community resources.",
+    description: "Built Family Housing Hub as a full-stack web application to help families manage housing and health in one place. The platform addresses a critical gap in housing assistance services where many tools are English-only, supporting English, Spanish, and Portuguese so language is never a barrier to safe housing. Built with React.js and Firebase Firestore/Auth, it supports 100+ concurrent users with real-time synchronization. I designed and implemented the UI/UX, secure authentication flow, real-time database architecture, accessibility-first interface, and features for rent tracking, maintenance requests, document storage, health appointments, medication reminders, emergency alerts, and community resources.",
     live: "https://family-housing-hub.onrender.com/",
     code: "https://github.com/Samkwibe/Family-Housing-Hub",
     image: "/repo_images_bundle/Family Housing Hub.png",
     featured: true,
-    year: "Junior Year",
+    year: "Jan 2025 - Aug 2025",
     highlights: [
       "Multilingual support (English, Spanish, Portuguese)",
-      "Firebase Auth for secure authentication",
-      "Real-time Firestore database",
-      "WCAG 2.1 accessibility features",
-      "100+ concurrent users supported"
+      "Rent tracking, maintenance requests, and document storage",
+      "Health appointments, medication reminders, and emergency alerts",
+      "Firebase Authentication and real-time Firestore architecture",
+      "WCAG 2.1 compliant design supporting 100+ concurrent users"
+    ]
+  },
+  {
+    id: "employee-attrition-prediction",
+    name: "Employee Attrition Prediction",
+    category: "Machine Learning",
+    tech: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib", "GridSearchCV", "Feature Engineering"],
+    summary: "Machine learning classification model that predicts employees at high risk of attrition so HR teams can intervene before turnover happens.",
+    description: "Built an employee attrition prediction model for an SNHU machine learning project focused on helping HR teams identify employees at high risk of leaving. Using a real-world HR dataset, I cleaned and explored employee data, engineered features such as tenure, satisfaction, department, salary band, and overtime patterns, trained multiple classification algorithms, tuned models with GridSearchCV, handled class imbalance, and evaluated results with precision, recall, F1-score, ROC-AUC, and cross-validation. The final model achieved 85% accuracy and included visualizations for feature importance and performance so non-technical stakeholders could understand the findings.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Employee-Attrition-Prediction.png",
+    featured: true,
+    year: "Jan 2025 - Apr 2025",
+    highlights: [
+      "Predicted employee attrition risk with supervised binary classification",
+      "Engineered HR features from tenure, satisfaction, salary, department, and overtime data",
+      "Used GridSearchCV, cross-validation, and class imbalance handling",
+      "Evaluated performance with precision, recall, F1-score, ROC-AUC, and 85% accuracy",
+      "Created visualizations for model performance and feature importance"
+    ]
+  },
+  {
+    id: "real-time-chatroom-svelte",
+    name: "Real-Time Chatroom Application",
+    category: "Full-Stack Web Application",
+    tech: ["SvelteKit", "Svelte", "JavaScript", "Prisma", "PostgreSQL", "Docker", "CSS3", "Flexbox"],
+    summary: "Collaborative real-time chatroom app with authentication, live message delivery, dark mode UI, Prisma database access, and Dockerized deployment.",
+    description: "Built a real-time chatroom application as a collaborative 5-person SNHU team project with 69 commits across 11 branches. The application includes user authentication, live message delivery, responsive chatroom UI, dark mode, Prisma ORM for type-safe database access, PostgreSQL persistence, and Docker containerization for consistent deployment. I contributed to the frontend architecture, chatroom UI, flexbox-based layout system, and edit chatroom functionality while working through branch coordination, merge conflicts, deployment iterations, and team collaboration workflows.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Real-Time-Chatroom-Svelte.png",
+    featured: true,
+    year: "Jan 2023 - Apr 2023",
+    highlights: [
+      "Collaborative 5-person team project with 69 commits across 11 branches",
+      "Built real-time chatroom UI with SvelteKit and responsive Flexbox layouts",
+      "Implemented authentication, live message delivery, and dark mode experience",
+      "Used Prisma and PostgreSQL for schema management and type-safe database queries",
+      "Containerized the app with Docker for consistent development and deployment"
+    ]
+  },
+  {
+    id: "zombie-shooter-csharp",
+    name: "Zombie Shooter Game",
+    category: "Game Development",
+    tech: ["C#", "Windows Forms", ".NET", "Object-Oriented Programming", "Game Loop", "Collision Detection"],
+    summary: "2D zombie shooter game built from scratch in C# with Windows Forms, bullet physics, enemy movement, collision detection, and real-time game state updates.",
+    description: "Built a 2D zombie shooter game entirely in C# using Windows Forms, where the player uses a gun to eliminate waves of incoming zombies. The project included a custom game loop, bullet trajectory logic, collision detection, enemy movement, player input handling, and shared game state updates across frames. It was my first real-time interactive C# application and taught core concepts that apply to game development and real-time systems, including pseudocode planning, object movement, collision events, and managing multiple active entities without state conflicts.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Zombie-Shooter-Game.png",
+    featured: false,
+    year: "Jan 2023 - Apr 2023",
+    highlights: [
+      "Built a real-time 2D shooter in C# and Windows Forms",
+      "Implemented game loop, player input, bullet physics, and enemy movement",
+      "Added collision detection between bullets, zombies, and game objects",
+      "Managed multiple moving objects in shared game state",
+      "Used pseudocode planning before implementation to reduce logic errors"
     ]
   },
   {
@@ -237,21 +397,22 @@ export const projects = [
   // ========== COURSE LABS & ASSIGNMENTS ==========
   {
     id: "cs465-lab3",
-    name: "Qzicl Educational Quiz App (CS-465 Lab 3)",
+    name: "QZICL Lab 3 Interactive Quiz Application",
     category: "Course Lab",
-    tech: ["React.js", "Node.js", "Full-Stack Web Development"],
-    summary: "CS-465 Full Stack Development lab assignment. Educational quiz application that allows users to select topics and test their knowledge.",
-    description: "Full Stack Development lab assignment creating an educational quiz application (Qzicl) that allows users to select topics and test their knowledge. May have been completed individually or with a partner.",
+    tech: ["React 18", "Vite", "JavaScript", "Accessibility", "Responsive Design", "CSS Variables", "MSW"],
+    summary: "Modern accessible quiz platform where learners browse topics, choose quizzes, answer questions interactively, and review animated results.",
+    description: "Built QZICL Lab 3 as a modern client-side quiz application focused on React architecture, accessibility, responsive design, and polished user experience. The app guides users through topics, quiz selection, a get-ready screen, interactive quiz running, results, and optional answer review. It uses reusable components, semantic structure, keyboard and screen-reader friendly controls, animated progress feedback, Vite performance, and built-in sanity checks for quiz integrity.",
     live: "https://cs465-lab3-samuelraymond.onrender.com/",
     code: "https://github.com/Samkwibe/cs465-lab3-samuelraymond",
     image: "/repo_images_bundle/cs465-lab0.png",
-    featured: false,
+    featured: true,
     year: "Junior Year",
     highlights: [
-      "CS-465 Lab 3",
-      "Educational quiz application",
-      "Topic selection",
-      "Knowledge testing"
+      "Guided Home to Quiz to Results user flow",
+      "Accessible keyboard and screen-reader friendly interface",
+      "Reusable React components for topics, quizzes, questions, progress, and results",
+      "Cosmic dark UI with gradients, glass effects, and responsive layouts",
+      "Built-in sanity tests for option labels, progress calculations, and answer mapping"
     ]
   },
   {
@@ -564,6 +725,25 @@ export const projects = [
       "React development",
       "Responsive design",
       "Professional showcase"
+    ]
+  },
+  {
+    id: "mobile-portfolio-app",
+    name: "Samuel Kwibe Mobile Portfolio",
+    category: "Mobile Application",
+    tech: ["Expo", "React Native", "JavaScript", "iOS", "Mobile UI"],
+    summary: "iPhone-ready mobile version of the portfolio app with native screens for projects, skills, experience, education, and contact.",
+    description: "Built an Expo React Native mobile portfolio that reuses the same profile and project data as the web app. Includes a native tab layout, searchable project browsing, project detail views, contact actions, and polished mobile cards designed for iPhone.",
+    live: "#",
+    code: "https://github.com/Samkwibe/Samuel_kwibe_Porfolio",
+    image: "/repo_images_bundle/Mobile-Portfolio-App.png",
+    featured: true,
+    year: "Junior Year",
+    highlights: [
+      "Expo React Native iPhone app",
+      "Shared data with the web portfolio",
+      "Native project browsing experience",
+      "Mobile-first UI and contact actions"
     ]
   }
 ]

@@ -12,6 +12,7 @@ import About from './components/About.jsx'
 import Testimonials from './components/Testimonials.jsx'
 
 import Layout from './components/Layout.jsx'
+import AiTerminal from './components/AiTerminal.jsx'
 
 const router = createHashRouter([
   {
@@ -26,6 +27,7 @@ const router = createHashRouter([
       { path: 'skills', element: <Skills /> },
       { path: 'testimonials', element: <Testimonials /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'terminal', element: <AiTerminal /> },
     ]
   }
 ])
