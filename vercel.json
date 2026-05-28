@@ -6,12 +6,12 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/Samuel_kwibe_Porfolio/assets/(.*)",
-      "destination": "/assets/$1"
+      "source": "/Samuel_kwibe_Porfolio/assets/:path*",
+      "destination": "/assets/:path*"
     },
     {
-      "source": "/Samuel_kwibe_Porfolio/repo_images_bundle/(.*)",
-      "destination": "/repo_images_bundle/$1"
+      "source": "/Samuel_kwibe_Porfolio/repo_images_bundle/:path*",
+      "destination": "/repo_images_bundle/:path*"
     },
     {
       "source": "/Samuel_kwibe_Porfolio/api/chat",
