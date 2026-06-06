@@ -130,7 +130,7 @@ function TerminalLine({ entry }) {
 export default function AiTerminal() {
   const [history, setHistory] = useState([
     { type: 'banner', text: ASCII_BANNER },
-    { type: 'system', text: 'Terminal initialized. Connected to AI backend via OpenRouter.' },
+    { type: 'system', text: 'Terminal initialized. Connected to AI backend via NVIDIA.' },
     { type: 'system', text: 'Type "help" for available commands, or ask any question.' },
   ])
   const [input, setInput] = useState('')
@@ -258,7 +258,7 @@ export default function AiTerminal() {
       ])
     } catch (err) {
       const message = err.message?.includes('Failed to fetch')
-        ? 'The AI backend is not available. Deploy with /api/chat support and set OPENROUTER_API_KEY on the server.'
+        ? 'The AI backend is not available. Deploy with /api/chat support and set NVIDIA_API_KEY on the server.'
         : err.message
 
       updateLastEntry({ type: 'error', text: message, streaming: false })
@@ -380,7 +380,7 @@ export default function AiTerminal() {
 
       {/* Footer hint */}
       <div className="text-center text-[10px] text-slate-600 mt-3 font-mono">
-        Powered by a protected OpenRouter proxy • Responses are generated and may not be 100% accurate
+        Powered by NVIDIA AI • Responses are generated and may not be 100% accurate
       </div>
     </div>
   )

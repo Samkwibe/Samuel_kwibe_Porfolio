@@ -1,6 +1,6 @@
 import {
   checkRateLimit,
-  createOpenRouterResponse,
+  createNvidiaResponse,
   getClientId,
   normalizeMessages,
   readResponseText
@@ -48,10 +48,7 @@ export default async function handler(req, res) {
 
     const body = await readJsonBody(req)
     const messages = normalizeMessages(body)
-    const { response, model } = await createOpenRouterResponse({
-      messages,
-      origin: req.headers.origin || req.headers.referer
-    })
+    const { response, model } = await createNvidiaResponse({ messages })
     const streamText = await readResponseText(response)
 
     res.setHeader('Content-Type', 'text/event-stream; charset=utf-8')

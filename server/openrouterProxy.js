@@ -1,11 +1,11 @@
 import { SYSTEM_PROMPT } from '../src/data/samuelContext.js'
 
-const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions'
-const DEFAULT_MODEL = process.env.OPENROUTER_MODEL || 'openai/gpt-4o-mini'
+const NVIDIA_API_URL = 'https://integrate.api.nvidia.com/v1/chat/completions'
+const DEFAULT_MODEL = process.env.NVIDIA_MODEL || 'meta/llama-3.1-8b-instruct'
 const FALLBACK_MODELS = [
   DEFAULT_MODEL,
-  'google/gemini-2.0-flash-001',
-  'meta-llama/llama-3.1-8b-instruct:free'
+  'mistralai/mistral-7b-instruct-v0.3',
+  'google/gemma-2-2b-it'
 ].filter((model, index, models) => model && models.indexOf(model) === index)
 
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
@@ -61,24 +61,22 @@ export function normalizeMessages(body) {
     .filter(message => message.content.trim())
 }
 
-export async function createOpenRouterResponse({ messages, origin }) {
-  const apiKey = process.env.OPENROUTER_API_KEY || process.env.VITE_OPENROUTER_API_KEY
+export async function createNvidiaResponse({ messages }) {
+  const apiKey = process.env.NVIDIA_API_KEY
 
   if (!apiKey) {
-    throw new Error('OpenRouter API key is not configured on the server.')
+    throw new Error('NVIDIA API key is not configured on the server.')
   }
 
   let lastError
 
   for (const model of FALLBACK_MODELS) {
     try {
-      const response = await fetch(OPENROUTER_API_URL, {
+      const response = await fetch(NVIDIA_API_URL, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': origin || process.env.SITE_URL || 'http://localhost:5173',
-          'X-Title': 'Samuel Kwibe Portfolio Terminal'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           model,
@@ -94,7 +92,7 @@ export async function createOpenRouterResponse({ messages, origin }) {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}))
-        throw new Error(errorData.error?.message || `OpenRouter error: ${response.status}`)
+        throw new Error(errorData.error?.message || `NVIDIA API error: ${response.status}`)
       }
 
       return { response, model }
