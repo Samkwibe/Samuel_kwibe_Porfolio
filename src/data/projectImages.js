@@ -1,4 +1,6 @@
 export const projectImageUrls = {
+  'legacylift': '/repo_images_bundle/LegacyLift.png',
+  'ziganya': '/repo_images_bundle/Ziganya.png',
   'skillrise': 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=85',
   'beacon-nh': 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1200&q=85',
   'cs330-computational-graphics': 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=85',
@@ -67,9 +69,11 @@ const localProjectImagePaths = new Set([
   'repo_images_bundle/CS330-Computational-Graphics.png',
   'repo_images_bundle/Employee-Attrition-Prediction.png',
   'repo_images_bundle/Food-Waste-Recipe-Inventory.png',
+  'repo_images_bundle/LegacyLift.png',
   'repo_images_bundle/Mobile-Portfolio-App.png',
   'repo_images_bundle/Real-Time-Chatroom-Svelte.png',
   'repo_images_bundle/SkillRise.png',
+  'repo_images_bundle/Ziganya.png',
   'repo_images_bundle/Zombie-Shooter-Game.png'
 ])
 
