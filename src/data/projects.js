@@ -22,6 +22,46 @@
 export const projects = [
   // ========== FEATURED / MAJOR PROJECTS ==========
   {
+    id: "legacylift",
+    name: "LegacyLift",
+    category: "Full-Stack Web Application",
+    tech: ["Python", "Streamlit", "Gemini API", "Claude API", "OpenAI API", "NVIDIA NIM", "REST APIs", "GitHub Integration"],
+    summary: "AI-powered code modernization and developer mentorship platform — Senior Capstone Project at SNHU. Analyzes, refactors, secures, documents, and modernizes legacy software using multi-LLM integration.",
+    description: "Built LegacyLift as my Senior Capstone Project at Southern New Hampshire University. The platform helps developers analyze, understand, refactor, secure, document, and modernize legacy software using advanced AI technologies including Google Gemini, Anthropic Claude, OpenAI GPT-4o, and NVIDIA NIM. LegacyLift can process source files, ZIP archives, and GitHub repositories to identify code smells, security vulnerabilities, performance bottlenecks, and maintainability issues while generating cleaner, production-ready code with detailed explanations. Unlike traditional code review tools, LegacyLift acts as a virtual Senior Software Engineer by explaining code changes, highlighting best practices, identifying risks, and helping developers improve their coding skills. Through this project, I gained hands-on experience in Full-Stack Development, Generative AI Integration, API Development, Software Architecture, Cloud Technologies, Secure Coding Practices, and Modern Software Engineering Workflows.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/LegacyLift.png",
+    featured: true,
+    year: "May 2026 - Jun 2026",
+    highlights: [
+      "Senior Capstone Project — AI-powered code modernization platform",
+      "Multi-LLM integration: Gemini, Claude, GPT-4o, and NVIDIA NIM",
+      "AST-based static analysis, automated refactoring, and security vulnerability detection",
+      "PDF report generation, architecture visualization, and interactive walkthroughs",
+      "Processes source files, ZIP archives, and GitHub repositories"
+    ]
+  },
+  {
+    id: "ziganya",
+    name: "Ziganya",
+    category: "Full-Stack Web Application",
+    tech: ["React", "Next.js", "Node.js", "PostgreSQL", "AWS", "Docker", "Kubernetes"],
+    summary: "Modern enterprise fintech platform providing secure digital banking, payments, lending, savings, investments, and business finance solutions with scalable cloud-native architecture.",
+    description: "Ziganya is a modern enterprise fintech platform designed to provide secure digital banking, payments, lending, savings, investments, and business finance solutions. Built with scalable cloud-native architecture, Ziganya empowers individuals, businesses, and underserved communities through innovative financial technology. The platform focuses on security, accessibility, performance, and financial inclusion while leveraging modern technologies such as React, Next.js, Node.js, PostgreSQL, AWS, Docker, and Kubernetes.",
+    live: "#",
+    code: "https://github.com/Samkwibe",
+    image: "/repo_images_bundle/Ziganya.png",
+    featured: true,
+    year: "Senior Year",
+    highlights: [
+      "Secure digital banking with payments, lending, savings, and investments",
+      "Cloud-native architecture with AWS, Docker, and Kubernetes",
+      "Full-stack React/Next.js frontend with Node.js and PostgreSQL backend",
+      "Focus on financial inclusion for underserved communities",
+      "Enterprise-grade security, accessibility, and performance"
+    ]
+  },
+  {
     id: "skillrise",
     name: "SkillRise",
     category: "Full-Stack Web Application",

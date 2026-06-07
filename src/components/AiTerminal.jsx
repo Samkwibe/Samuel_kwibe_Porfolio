@@ -63,16 +63,18 @@ Type a question to learn more, or try 'projects' / 'skills'.`,
 
   projects: () => `Featured Projects
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  01  SkillRise              Next.js AI learning platform
-  02  Beacon-NH              React refugee resource platform
-  03  CS-330 Graphics        OpenGL 3D office building
-  04  Food Waste Inventory   React + Node barcode scanner
-  05  Artemis Financial      Spring Boot security assessment
-  06  Family Housing Hub     React + Firebase multilingual
-  07  Employee Attrition     ML prediction model (85% acc)
-  08  Real-Time Chatroom     SvelteKit + Prisma + Docker
-  09  Quick Food Finder      Android Kotlin + Google Maps
-  10  SNHU Food Waste        Firebase + Chart.js dashboard
+  01  LegacyLift           AI code modernization (Senior Capstone)
+  02  Ziganya              Enterprise fintech platform
+  03  SkillRise            Next.js AI learning platform
+  04  Beacon-NH            React refugee resource platform
+  05  CS-330 Graphics      OpenGL 3D office building
+  06  Food Waste Inventory React + Node barcode scanner
+  07  Artemis Financial    Spring Boot security assessment
+  08  Family Housing Hub   React + Firebase multilingual
+  09  Employee Attrition   ML prediction model (85% acc)
+  10  Real-Time Chatroom   SvelteKit + Prisma + Docker
+  11  Quick Food Finder    Android Kotlin + Google Maps
+  12  SNHU Food Waste      Firebase + Chart.js dashboard
 
 Type "tell me about [project name]" for details on any project.`
 }
